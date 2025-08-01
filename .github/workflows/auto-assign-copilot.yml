@@ -10,15 +10,19 @@ jobs:
     steps:
       - name: Assign Copilot using GraphQL API
         env:
-          GITHUB_TOKEN: ${{ secrets.COPILOT_AGENT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_ID: ${{ secrets.REPO_ID }}
           COPILOT_ID: ${{ secrets.COPILOT_ID }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
+          JSON_PAYLOAD=$(cat <<EOF
+          {
+            "query": "mutation { createIssue(input: {repositoryId: \\\"$REPO_ID\\\", title: \\\"$ISSUE_TITLE\\\", body: \\\"$ISSUE_BODY\\\", assigneeIds: [\\\"$COPILOT_ID\\\"]}) { issue { id title assignees(first: 10) { nodes { login } } } } }"
+          }
+          EOF
+          )
           curl -X POST https://api.github.com/graphql \
             -H "Authorization: bearer $GITHUB_TOKEN" \
             -H "Content-Type: application/json" \
-            -d '{
-              "query": "mutation { createIssue(input: {repositoryId: \"'$REPO_ID'\", title: \"'$ISSUE_TITLE'\", body: \"'$ISSUE_BODY'\", assigneeIds: [\"'$COPILOT_ID'\"]}) { issue { id title assignees(first: 10) { nodes { login } } } } }"
-            }'
+            -d "$JSON_PAYLOAD"
