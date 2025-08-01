@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Assign Copilot using GraphQL API (Safe JSON)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_AGENT }}
           REPO_ID: ${{ secrets.REPO_ID }}
           COPILOT_ID: ${{ secrets.COPILOT_ID }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
