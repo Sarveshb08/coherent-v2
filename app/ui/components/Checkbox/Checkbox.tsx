@@ -37,11 +37,11 @@ const StyledCheckbox = styled(MuiCheckbox, {
       backgroundColor: colors.background.white,
     },
 
-    // Indeterminate state  
-    '&.MuiCheckbox-indeterminate .MuiSvgIcon-root': {
-      color: colorTokens.main,
-      backgroundColor: colors.background.white,
-    },
+    // // Indeterminate state  
+    // '&.MuiCheckbox-indeterminate .MuiSvgIcon-root': {
+    //   color: colorTokens.main,
+    //   backgroundColor: colors.background.white,
+    // },
 
     // Hover state
     '&:hover': {
@@ -72,6 +72,7 @@ const StyledCheckbox = styled(MuiCheckbox, {
       },
     },
 
+   
     '& .MuiTouchRipple-root .MuiTouchRipple-child': {
       backgroundColor: colorTokens.focus,
     },

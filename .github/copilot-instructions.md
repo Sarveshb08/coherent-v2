@@ -1,5 +1,8 @@
-- Whenever design to code prompts are provided, specifically from figma files, follow below rules:
-  - Analyse the figma response carefully, if MUI kit is used, install the library for the same and use the same components.
-  - Generate React components that match the design specifications.
-  - Ensure reusability and modularity of components.
-  
+- For issues related to add new design components,
+  - Follow the established design tokens and guidelines.
+  - Ensure components are responsive and accessible.
+  - Include documentation and usage examples.
+
+
+** Design tokens **
+- Only edit this file if new tokens are required for build new design components.
