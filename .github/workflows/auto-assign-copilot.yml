@@ -1,34 +1,20 @@
-name: Assign Copilot to New Issues (GraphQL)
+name: Auto-assign Issues to Copilot
 
 on:
   issues:
     types: [opened]
 
 jobs:
-  assign-copilot:
+  assign-issue:
     runs-on: ubuntu-latest
-    steps:
-      - name: Assign Copilot using GraphQL API (Safe JSON)
-        env:
-          GITHUB_TOKEN: ${{ secrets.COPILOT_AGENT }}
-          REPO_ID: ${{ secrets.REPO_ID }}
-          COPILOT_ID: ${{ secrets.COPILOT_ID }}
-          ISSUE_TITLE: ${{ github.event.issue.title }}
-          ISSUE_BODY: ${{ github.event.issue.body }}
-        run: |
-          QUERY="mutation {
-            createIssue(input: {
-              repositoryId: \"$REPO_ID\",
-              title: \"$ISSUE_TITLE\",
-              body: \"$ISSUE_BODY\",
-              assigneeIds: [\"$COPILOT_ID\"]
-            }) {
-              issue { id title assignees(first: 10) { nodes { login } } }
-            }
-          }"
 
-          JSON_PAYLOAD=$(jq -n --arg query "$QUERY" '{query: $query}')
-          curl -X POST https://api.github.com/graphql \
-            -H "Authorization: bearer $GITHUB_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "$JSON_PAYLOAD"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Assign issue to copilot
+        run: |
+          gh issue edit ${{ github.event.issue.number }} --add-assignee "@copilot"
+
+        env:
+          GH_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}

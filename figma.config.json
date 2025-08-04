@@ -1,8 +1,0 @@
-{
-  "codeConnect": {
-    "parser": "react",
-    "include": ["app/ui/**/*.{ts,tsx}"],
-    "exclude": ["node_modules/**", "dist/**"],
-    "outputDir": "./figma-connect"
-  }
-}
