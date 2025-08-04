@@ -26,19 +26,20 @@
     "use-debounce": "^10.0.4"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.15",
-    "@storybook/addon-interactions": "^7.6.15",
-    "@storybook/addon-links": "^7.6.15",
-    "@storybook/addon-onboarding": "^1.0.11",
-    "@storybook/blocks": "7.6.10",
-    "@storybook/react": "7.6.10",
-    "@storybook/react-vite": "^7.6.15",
-    "@storybook/test": "7.6.10",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-links": "^8.6.14",
+    "@storybook/addon-onboarding": "^8.6.14",
+    "@storybook/addon-viewport": "^8.6.14",
+    "@storybook/blocks": "8.6.14",
+    "@storybook/react": "8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@storybook/test": "8.6.14",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "22.10.7",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
-    "storybook": "7.6.10"
+    "storybook": "8.6.14"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

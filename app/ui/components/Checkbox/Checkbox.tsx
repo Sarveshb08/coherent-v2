@@ -13,44 +13,44 @@ const StyledCheckbox = styled(MuiCheckbox, {
 }>(({ theme, colorVariant, sizeVariant }) => {
   const colorTokens = colors[colorVariant];
   const sizeTokens = sizes[sizeVariant];
-  
+
   return {
     padding: `${sizes.small.padding}px`,
     borderRadius: `${borderRadius.focusRing}px`,
-    
+
     '& .MuiSvgIcon-root': {
       width: `${sizeTokens.size}px`,
       height: `${sizeTokens.size}px`,
       borderRadius: `${borderRadius.checkbox}px`,
     },
-    
+
     // Default/unchecked state
     '&:not(.Mui-checked) .MuiSvgIcon-root': {
       color: colorVariant === 'default' ? colorTokens.border : 'transparent',
       backgroundColor: colors.background.white,
       border: `1px solid ${colorVariant === 'default' ? colorTokens.border : colorTokens.main}`,
     },
-    
+
     // Checked state
     '&.Mui-checked .MuiSvgIcon-root': {
       color: colorTokens.main,
       backgroundColor: colors.background.white,
     },
-    
+
     // Indeterminate state  
     '&.MuiCheckbox-indeterminate .MuiSvgIcon-root': {
       color: colorTokens.main,
       backgroundColor: colors.background.white,
     },
-    
+
     // Hover state
     '&:hover': {
       backgroundColor: colorTokens.hover,
     },
-    
+
     // Focus state
     '&.Mui-focusVisible': {
-      backgroundColor: 'transparent',
+      backgroundColor: colorTokens.focus,
       '&::after': {
         content: '""',
         position: 'absolute',
@@ -63,7 +63,7 @@ const StyledCheckbox = styled(MuiCheckbox, {
         pointerEvents: 'none',
       },
     },
-    
+
     // Disabled state
     '&.Mui-disabled': {
       '& .MuiSvgIcon-root': {
@@ -71,6 +71,11 @@ const StyledCheckbox = styled(MuiCheckbox, {
         borderColor: colorTokens.disabled || colors.default.disabled,
       },
     },
+
+    '& .MuiTouchRipple-root .MuiTouchRipple-child': {
+      backgroundColor: colorTokens.focus,
+    },
+
   };
 });
 
@@ -80,24 +85,24 @@ export interface CheckboxProps extends Omit<MuiCheckboxProps, 'color' | 'size'> 
    * @default 'primary'
    */
   color?: ColorVariant;
-  
+
   /**
    * The size variant of the checkbox
    * @default 'medium'
    */
   size?: SizeVariant;
-  
+
   /**
    * Whether the checkbox is in an indeterminate state
    * @default false
    */
   indeterminate?: boolean;
-  
+
   /**
    * Additional CSS classes
    */
   className?: string;
-  
+
   /**
    * Label for the checkbox (optional)
    */
@@ -110,7 +115,7 @@ export interface CheckboxProps extends Omit<MuiCheckboxProps, 'color' | 'size'> 
  */
 export const Checkbox: React.FC<CheckboxProps> = ({
   color = 'primary',
-  size = 'medium', 
+  size = 'medium',
   indeterminate = false,
   className,
   label,
