@@ -60,6 +60,29 @@ export const strokeWeights = {
   error: 2,                // Error state border
 } as const;
 
+// Radio component specific sizes from Figma
+export const radioSizes = {
+  small: {
+    size: 20,              // 20x20px radio button
+    iconSize: 16.67,       // Inner checked circle size
+    focusRipple: 34,       // 34x34px focus ring
+    padding: 9,            // 9px padding around radio
+  },
+  medium: {
+    size: 24,              // 24x24px radio button  
+    iconSize: 20,          // Inner checked circle size
+    focusRipple: 38,       // 38x38px focus ring
+    padding: 9,            // 9px padding around radio
+  },
+  large: {
+    size: 28,              // 28x28px radio button
+    iconSize: 23.33,       // Inner checked circle size
+    focusRipple: 42,       // 42x42px focus ring
+    padding: 9,            // 9px padding around radio
+  },
+} as const;
+
 // Export size type for TypeScript
 export type SizeVariant = 'small' | 'medium' | 'large';
 export type TextFieldSizeVariant = 'small' | 'medium';
+export type RadioSizeVariant = 'small' | 'medium' | 'large';
