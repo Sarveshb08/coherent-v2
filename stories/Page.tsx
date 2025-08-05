@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-import './page.css';
-
 type User = {
   name: string;
 };
@@ -12,8 +9,7 @@ export const Page: React.FC = () => {
 
   return (
     <article>
-     
-      <section className="storybook-page">
+      <section style={{ padding: '3rem', maxWidth: '600px', margin: '0 auto' }}>
         <h2>Pages in Storybook</h2>
         <p>
           We recommend building UIs with a{' '}
@@ -48,8 +44,8 @@ export const Page: React.FC = () => {
           </a>
           .
         </p>
-        <div className="tip-wrapper">
-          <span className="tip">Tip</span> Adjust the width of the canvas with the{' '}
+        <div style={{ padding: '1rem', backgroundColor: '#f0f0f0', borderRadius: '4px', marginTop: '2rem' }}>
+          <span style={{ fontWeight: 'bold' }}>Tip</span> Adjust the width of the canvas with the{' '}
           <svg width="10" height="10" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fillRule="evenodd">
               <path
