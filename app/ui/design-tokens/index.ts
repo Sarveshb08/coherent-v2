@@ -9,3 +9,12 @@ export interface CheckboxVariant {
   color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'default';
   size: 'small' | 'medium' | 'large';
 }
+
+// TextField variant types
+export interface TextFieldVariant {
+  variant: 'standard' | 'filled' | 'outlined';
+  size: 'small' | 'medium';
+  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'default';
+}
+
+export type TextFieldVariantType = 'standard' | 'filled' | 'outlined';
