@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { Notification } from '@/app/ui/components';
 
 export default function Page() {
   return (
@@ -11,6 +14,32 @@ export default function Page() {
           <p className="text-xl font-bold text-gray-700">
             A comprehensive design system for modern web applications
           </p>
+        </div>
+
+        {/* Notification Component Demo */}
+        <div className="space-y-4 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Notification Component Demo</h2>
+          
+          <Notification
+            severity="success"
+            variant="filled"
+            title="Welcome to Coherent-v2!"
+            description="The new notification component is now available."
+          />
+          
+          <Notification
+            severity="info"
+            variant="outlined"
+            title="Information"
+            description="Check out the new design system components in Storybook."
+          />
+          
+          <Notification
+            severity="warning"
+            variant="standard"
+            title="Note"
+            description="This page demonstrates the notification component functionality."
+          />
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">

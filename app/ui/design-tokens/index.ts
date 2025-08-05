@@ -18,3 +18,11 @@ export interface TextFieldVariant {
 }
 
 export type TextFieldVariantType = 'standard' | 'filled' | 'outlined';
+
+// Notification variant types
+export interface NotificationProps {
+  severity: 'error' | 'warning' | 'info' | 'success';
+  variant: 'filled' | 'outlined' | 'standard';
+  title: string;
+  description?: string;
+}
