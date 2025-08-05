@@ -2,3 +2,4 @@
 // Re-exports all UI components
 
 export { Checkbox, type CheckboxProps } from './Checkbox';
+export { TextField, type TextFieldProps } from './TextField';
