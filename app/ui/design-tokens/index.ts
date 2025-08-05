@@ -18,3 +18,10 @@ export interface TextFieldVariant {
 }
 
 export type TextFieldVariantType = 'standard' | 'filled' | 'outlined';
+
+// RadioGroup variant types
+export interface RadioGroupVariant {
+  color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'default';
+  size: 'small' | 'medium' | 'large';
+  direction: 'row' | 'column';
+}
