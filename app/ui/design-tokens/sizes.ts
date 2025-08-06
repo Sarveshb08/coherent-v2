@@ -60,6 +60,34 @@ export const strokeWeights = {
   error: 2,                // Error state border
 } as const;
 
+// Notification component sizes from Figma
+export const notificationSizes = {
+  padding: '6px 16px',         // Main container padding
+  iconPadding: '7px 12px 7px 0px', // Icon container padding
+  textPadding: '8px 0px',      // Text container padding
+  gap: '4px',                  // Gap between title and description
+  borderRadius: '6px',         // Border radius
+  iconSize: '22px',            // Icon size
+} as const;
+
+// Typography styles from Figma
+export const notificationTypography = {
+  title: {
+    fontFamily: 'Roboto',
+    fontWeight: 500,
+    fontSize: '16px',
+    lineHeight: '1.5em',
+    letterSpacing: '0.9375%',
+  },
+  description: {
+    fontFamily: 'Roboto',
+    fontWeight: 400,          // Regular weight for description
+    fontSize: '14px',
+    lineHeight: '1.43em',
+    letterSpacing: '1.21%',
+  },
+} as const;
+
 // Export size type for TypeScript
 export type SizeVariant = 'small' | 'medium' | 'large';
 export type TextFieldSizeVariant = 'small' | 'medium';
