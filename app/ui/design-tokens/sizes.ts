@@ -88,6 +88,47 @@ export const notificationTypography = {
   },
 } as const;
 
+// Switch specific sizes from Figma
+export const switchSizes = {
+  small: {
+    track: {
+      width: 40,              // 40px track width
+      height: 24,             // 24px track height
+    },
+    knob: {
+      size: 16,               // 16px knob diameter
+      padding: 4,             // 4px padding around knob
+      translateX: 16,         // 16px translate when checked
+    },
+    focusRipple: {
+      size: 20,               // 20px focus ring
+      offset: 2,              // 2px offset from knob
+    },
+  },
+  medium: {
+    track: {
+      width: 58,              // 58px track width  
+      height: 38,             // 38px track height
+    },
+    knob: {
+      size: 20,               // 20px knob diameter
+      padding: 9,             // 9px padding around knob
+      translateX: 20,         // 20px translate when checked
+    },
+    focusRipple: {
+      size: 34,               // 34px focus ring
+      offset: 2,              // 2px offset from knob
+    },
+  },
+} as const;
+
+// Switch transition timing
+export const switchTransitions = {
+  duration: 150,              // 150ms transition duration
+  easing: 'cubic-bezier(0.4, 0, 0.2, 1)', // Material Design easing
+} as const;
+
 // Export size type for TypeScript
 export type SizeVariant = 'small' | 'medium' | 'large';
 export type TextFieldSizeVariant = 'small' | 'medium';
+export type SwitchSizeVariant = 'small' | 'medium';

@@ -19,6 +19,12 @@ export interface TextFieldVariant {
 
 export type TextFieldVariantType = 'standard' | 'filled' | 'outlined';
 
+// Switch variant types
+export interface SwitchVariant {
+  color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'default';
+  size: 'small' | 'medium';
+}
+
 // Notification variant types
 export interface NotificationProps {
   severity: 'error' | 'warning' | 'info' | 'success';
