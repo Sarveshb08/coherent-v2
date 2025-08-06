@@ -73,6 +73,13 @@ Only proceed with coding after receiving approval comment
 
 ## Repository-Specific Guidelines
 
+### Package Manager
+- **ALWAYS use pnpm** for package management
+- Never use npm or yarn in this repository
+- Use `pnpm install`, `pnpm add`, `pnpm remove` for dependency management
+- Use `pnpm run <script>` or `pnpm <script>` for running scripts
+- Respect the locked versions in `pnpm-lock.yaml`
+
 ### Technology Stack Considerations
 - Respect existing technology choices
 - Suggest alternatives only when clearly beneficial
@@ -115,3 +122,4 @@ If unclear about requirements:
 [Risks, breaking changes, performance impact]
 
 📋 **Implementation Plan Ready for Review**
+```
