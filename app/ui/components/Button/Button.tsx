@@ -53,7 +53,7 @@ const StyledButton = styled(MuiButton, {
     color: '#FFFFFF',
     
     '&:hover': {
-      backgroundColor: colorTokens.hover !== colorTokens.main ? colorTokens.hover : `${colorTokens.main}dd`,
+      backgroundColor: colorTokens.hover.startsWith('rgba') ? colorTokens.hover : `${colorTokens.main}dd`,
       borderColor: colorTokens.border,
       transform: 'translateY(-1px)',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.12)',
