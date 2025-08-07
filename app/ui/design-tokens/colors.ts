@@ -114,6 +114,13 @@ export const colors = {
       icon: '#2E7D32',           // Success icon color for outlined/standard
     },
   },
+
+  // Progress-specific colors from Figma specifications
+  progress: {
+    primary: '#1976D2',     // Primary blue from Figma design
+    secondary: '#9C27B0',   // Secondary purple from Figma design
+    inherit: 'currentColor', // Uses current text color
+  },
 } as const;
 
 // Export individual color types for TypeScript

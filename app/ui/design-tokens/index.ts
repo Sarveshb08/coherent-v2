@@ -26,3 +26,9 @@ export interface NotificationProps {
   title: string;
   description?: string;
 }
+
+// Progress variant types
+export interface ProgressVariant {
+  type: 'determinate' | 'indeterminate' | 'buffer';
+  color: 'primary' | 'secondary' | 'inherit';
+}
