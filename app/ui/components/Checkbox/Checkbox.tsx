@@ -5,80 +5,80 @@ import clsx from 'clsx';
 import { colors, sizes, borderRadius, ColorVariant, SizeVariant } from '../../design-tokens';
 
 // Custom styled checkbox using MUI's styled API
-const StyledCheckbox = styled(MuiCheckbox, {
-  shouldForwardProp: (prop) => !['colorVariant', 'sizeVariant'].includes(prop as string),
-})<{
-  colorVariant: ColorVariant;
-  sizeVariant: SizeVariant;
-}>(({ theme, colorVariant, sizeVariant }) => {
-  const colorTokens = colors[colorVariant];
-  const sizeTokens = sizes[sizeVariant];
+// const StyledCheckbox = styled(MuiCheckbox, {
+//   shouldForwardProp: (prop) => !['colorVariant', 'sizeVariant'].includes(prop as string),
+// })<{
+//   colorVariant: ColorVariant;
+//   sizeVariant: SizeVariant;
+// }>(({ theme, colorVariant, sizeVariant }) => {
+//   const colorTokens = colors[colorVariant];
+//   const sizeTokens = sizes[sizeVariant];
 
-  return {
-    padding: `${sizes.small.padding}px`,
-    borderRadius: `${borderRadius.focusRing}px`,
+//   return {
+//     padding: `${sizes.small.padding}px`,
+//     borderRadius: `${borderRadius.focusRing}px`,
 
-    '& .MuiSvgIcon-root': {
-      width: `${sizeTokens.size}px`,
-      height: `${sizeTokens.size}px`,
-      borderRadius: `${borderRadius.checkbox}px`,
-    },
+//     '& .MuiSvgIcon-root': {
+//       width: `${sizeTokens.size}px`,
+//       height: `${sizeTokens.size}px`,
+//       borderRadius: `${borderRadius.checkbox}px`,
+//     },
 
-    // Default/unchecked state
-    '&:not(.Mui-checked) .MuiSvgIcon-root': {
-      color: colorVariant === 'default' ? colorTokens.border : 'transparent',
-      backgroundColor: colors.background.white,
-      border: `1px solid ${colorVariant === 'default' ? colorTokens.border : colorTokens.main}`,
-    },
+//     // Default/unchecked state
+//     '&:not(.Mui-checked) .MuiSvgIcon-root': {
+//       color: colorVariant === 'default' ? colorTokens.border : 'transparent',
+//       backgroundColor: colors.background.white,
+//       border: `1px solid ${colorVariant === 'default' ? colorTokens.border : colorTokens.main}`,
+//     },
 
-    // Checked state
-    '&.Mui-checked .MuiSvgIcon-root': {
-      color: colorTokens.main,
-      backgroundColor: colors.background.white,
-    },
+//     // Checked state
+//     '&.Mui-checked .MuiSvgIcon-root': {
+//       color: colorTokens.main,
+//       backgroundColor: colors.background.white,
+//     },
 
-    // // Indeterminate state  
-    // '&.MuiCheckbox-indeterminate .MuiSvgIcon-root': {
-    //   color: colorTokens.main,
-    //   backgroundColor: colors.background.white,
-    // },
+//     // // Indeterminate state  
+//     // '&.MuiCheckbox-indeterminate .MuiSvgIcon-root': {
+//     //   color: colorTokens.main,
+//     //   backgroundColor: colors.background.white,
+//     // },
 
-    // Hover state
-    '&:hover': {
-      backgroundColor: colorTokens.hover,
-    },
+//     // Hover state
+//     '&:hover': {
+//       backgroundColor: colorTokens.hover,
+//     },
 
-    // Focus state
-    '&.Mui-focusVisible': {
-      backgroundColor: colorTokens.focus,
-      '&::after': {
-        content: '""',
-        position: 'absolute',
-        top: 2,
-        left: 2,
-        right: 2,
-        bottom: 2,
-        borderRadius: `${borderRadius.focusRing}px`,
-        backgroundColor: colorTokens.focus,
-        pointerEvents: 'none',
-      },
-    },
+//     // Focus state
+//     '&.Mui-focusVisible': {
+//       backgroundColor: colorTokens.focus,
+//       '&::after': {
+//         content: '""',
+//         position: 'absolute',
+//         top: 2,
+//         left: 2,
+//         right: 2,
+//         bottom: 2,
+//         borderRadius: `${borderRadius.focusRing}px`,
+//         backgroundColor: colorTokens.focus,
+//         pointerEvents: 'none',
+//       },
+//     },
 
-    // Disabled state
-    '&.Mui-disabled': {
-      '& .MuiSvgIcon-root': {
-        color: colorTokens.disabled || colors.default.disabled,
-        borderColor: colorTokens.disabled || colors.default.disabled,
-      },
-    },
+//     // Disabled state
+//     '&.Mui-disabled': {
+//       '& .MuiSvgIcon-root': {
+//         color: colorTokens.disabled || colors.default.disabled,
+//         borderColor: colorTokens.disabled || colors.default.disabled,
+//       },
+//     },
 
    
-    '& .MuiTouchRipple-root .MuiTouchRipple-child': {
-      backgroundColor: colorTokens.focus,
-    },
+//     '& .MuiTouchRipple-root .MuiTouchRipple-child': {
+//       backgroundColor: colorTokens.focus,
+//     },
 
-  };
-});
+//   };
+// });
 
 export interface CheckboxProps extends Omit<MuiCheckboxProps, 'color' | 'size'> {
   /**
@@ -123,9 +123,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   ...props
 }) => {
   const checkboxElement = (
-    <StyledCheckbox
-      colorVariant={color}
-      sizeVariant={size}
+    <MuiCheckbox
+      color={color}
+      size={size}
       indeterminate={indeterminate}
       className={clsx(className)}
       {...props}

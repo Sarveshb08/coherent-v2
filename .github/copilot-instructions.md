@@ -1,4 +1,4 @@
-# Copilot Instructions for Repository
+<!-- # Copilot Instructions for Repository
 
 ## Overview
 This repository follows a **planning-first approach** for all development work. Copilot must provide detailed implementation plans before writing any code.
@@ -114,4 +114,11 @@ If unclear about requirements:
 ### Impact Assessment
 [Risks, breaking changes, performance impact]
 
-📋 **Implementation Plan Ready for Review**
+📋 **Implementation Plan Ready for Review** -->
+
+**Requirements**:
+- Generate pixel-perfect code matching the Figma design
+- Implement ALL variants shown in Figma
+- Extract exact colors, fonts, spacing, and dimensions
+- NO additional styling beyond what's shown in Figma
+- Include all interactive states 
