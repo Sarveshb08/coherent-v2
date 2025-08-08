@@ -10,6 +10,13 @@ export interface CheckboxVariant {
   size: 'small' | 'medium' | 'large';
 }
 
+// Button variant types
+export interface ButtonVariant {
+  color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'default';
+  size: 'small' | 'medium' | 'large';
+  variant: 'primary' | 'secondary';
+}
+
 // TextField variant types
 export interface TextFieldVariant {
   variant: 'standard' | 'filled' | 'outlined';

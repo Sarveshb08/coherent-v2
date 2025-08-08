@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from './ui/components';
 
 export default function Page() {
   return (
@@ -30,6 +31,51 @@ export default function Page() {
             seamless Figma-to-code translation and automated code review processes, 
             bridging the gap between design and development.
           </p>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Button Component Demo
+          </h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Primary Buttons</h3>
+              <div className="flex flex-wrap gap-3">
+                <Button size="small" color="primary">Small</Button>
+                <Button size="medium" color="primary">Medium</Button>
+                <Button size="large" color="primary">Large</Button>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Secondary Buttons</h3>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="secondary" size="small" color="primary">Small</Button>
+                <Button variant="secondary" size="medium" color="primary">Medium</Button>
+                <Button variant="secondary" size="large" color="primary">Large</Button>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Color Variants</h3>
+              <div className="flex flex-wrap gap-3">
+                <Button color="primary">Primary</Button>
+                <Button color="secondary">Secondary</Button>
+                <Button color="error">Error</Button>
+                <Button color="warning">Warning</Button>
+                <Button color="info">Info</Button>
+                <Button color="success">Success</Button>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Disabled States</h3>
+              <div className="flex flex-wrap gap-3">
+                <Button disabled color="primary">Disabled Primary</Button>
+                <Button disabled variant="secondary" color="primary">Disabled Secondary</Button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="mt-12 text-center">
