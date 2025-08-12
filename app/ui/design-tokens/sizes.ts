@@ -87,3 +87,26 @@ export const notificationTypography = {
     letterSpacing: '1.21%',
   },
 } as const;
+
+// Export size variant types for TypeScript
+export type SizeVariant = 'small' | 'medium' | 'large';
+export type TextFieldSizeVariant = 'small' | 'medium';
+export type TextFieldVariantType = 'outlined' | 'filled' | 'standard';
+
+// SpeedDial component sizes from Figma
+export const speedDialSizes = {
+  main: {
+    size: 56,                // Large FAB size (56x56px)
+    iconSize: 24,            // Icon size for main FAB
+  },
+  action: {
+    size: 40,                // Small FAB size for actions (40x40px) 
+    iconSize: 18,            // Icon size for action items
+  },
+  spacing: {
+    actionSpacing: 8,        // Space between action items
+    mainToAction: 16,        // Distance from main FAB to first action
+  },
+} as const;
+
+export type SpeedDialDirection = 'up' | 'down' | 'left' | 'right';
