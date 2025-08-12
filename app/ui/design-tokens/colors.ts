@@ -59,9 +59,9 @@ export const colors = {
   // Default/neutral colors
   default: {
     main: '#6B6C7B',        // Gray
-    hover: 'rgba(105, 48, 202, 0.5)', // Hover state from Figma
+    hover: 'rgba(0, 0, 0, 0.04)', // Hover state from Figma
     focus: 'rgba(0, 0, 0, 0.12)',
-    border: '#6930CA',      // Default border from Figma
+    border: 'rgba(0, 0, 0, 0.56)',      // Default border from Figma
     disabled: 'rgba(0, 0, 0, 0.38)', // Disabled state from Figma
   },
   
