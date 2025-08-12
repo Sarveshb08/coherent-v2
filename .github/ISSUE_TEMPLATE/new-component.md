@@ -25,3 +25,4 @@ Create a reusable [] component for the Coherent-v2 design system, following the 
 - [] component matches the Figma design and passes visual review.
 - All props and variants documented.
 - Storybook stories demonstrate all visual states.
+- Attach playwright screenshot in PR as well.
