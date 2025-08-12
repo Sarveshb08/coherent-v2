@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { colors, sizes, borderRadius, strokeWeights, textFieldSizes, notificationSizes } from '../design-tokens';
+import { colors, sizes, borderRadius, strokeWeights, textFieldSizes, notificationSizes, stepperSizes, stepperTypography } from '../design-tokens';
 
 
 export const theme = createTheme({
@@ -93,6 +93,150 @@ export const theme = createTheme({
           },
         },
       ],
+    },
+
+    // Stepper component customization
+    MuiStepper: {
+      styleOverrides: {
+        root: {
+          '&.MuiStepper-horizontal': {
+            gap: `${stepperSizes.spacing.stepGap}px`,
+          },
+          '&.MuiStepper-vertical': {
+            gap: `${stepperSizes.spacing.stepGap}px`,
+          },
+        },
+      },
+    },
+
+    // StepIcon component customization
+    MuiStepIcon: {
+      styleOverrides: {
+        root: {
+          width: `${stepperSizes.stepIcon.size}px`,
+          height: `${stepperSizes.stepIcon.size}px`,
+          borderRadius: `${stepperSizes.stepIcon.borderRadius}px`,
+          fontSize: `${stepperSizes.stepIcon.fontSize}px`,
+          fontFamily: stepperTypography.stepNumber.fontFamily,
+          fontWeight: stepperTypography.stepNumber.fontWeight,
+          '&.Mui-active': {
+            backgroundColor: colors.stepper.active.background,
+            color: colors.stepper.active.text,
+          },
+          '&.Mui-completed': {
+            backgroundColor: colors.stepper.completed.background,
+            color: colors.stepper.completed.icon,
+          },
+          '&:not(.Mui-active):not(.Mui-completed)': {
+            backgroundColor: colors.stepper.inactive.background,
+            color: colors.stepper.inactive.text,
+          },
+        },
+        text: {
+          fontSize: `${stepperSizes.stepIcon.fontSize}px`,
+          fontFamily: stepperTypography.stepNumber.fontFamily,
+          fontWeight: stepperTypography.stepNumber.fontWeight,
+        },
+      },
+    },
+
+    // StepLabel component customization
+    MuiStepLabel: {
+      styleOverrides: {
+        root: {
+          '&[data-text-alignment="center"]': {
+            alignItems: 'center',
+            textAlign: 'center',
+          },
+        },
+        label: {
+          fontFamily: stepperTypography.stepTitle.fontFamily,
+          fontWeight: stepperTypography.stepTitle.fontWeight,
+          fontSize: stepperTypography.stepTitle.fontSize,
+          lineHeight: stepperTypography.stepTitle.lineHeight,
+          letterSpacing: stepperTypography.stepTitle.letterSpacing,
+          '&.Mui-active': {
+            color: colors.stepper.active.stepText,
+          },
+          '&.Mui-completed': {
+            color: colors.stepper.completed.text,
+          },
+          '&:not(.Mui-active):not(.Mui-completed)': {
+            color: colors.stepper.inactive.stepText,
+          },
+          '&[data-text-alignment="center"]': {
+            fontFamily: stepperTypography.stepTitleCenter.fontFamily,
+            fontWeight: stepperTypography.stepTitleCenter.fontWeight,
+            fontSize: stepperTypography.stepTitleCenter.fontSize,
+            lineHeight: stepperTypography.stepTitleCenter.lineHeight,
+            letterSpacing: stepperTypography.stepTitleCenter.letterSpacing,
+            textAlign: 'center',
+          },
+          '&.Mui-disabled': {
+            fontFamily: stepperTypography.stepTitleInactive.fontFamily,
+            fontWeight: stepperTypography.stepTitleInactive.fontWeight,
+            fontSize: stepperTypography.stepTitleInactive.fontSize,
+            lineHeight: stepperTypography.stepTitleInactive.lineHeight,
+            letterSpacing: stepperTypography.stepTitleInactive.letterSpacing,
+            textAlign: 'center',
+          },
+        },
+      },
+    },
+
+    // StepConnector component customization
+    MuiStepConnector: {
+      styleOverrides: {
+        root: {
+          '&.Mui-active .MuiStepConnector-line': {
+            borderColor: colors.stepper.connector.completed,
+          },
+          '&.Mui-completed .MuiStepConnector-line': {
+            borderColor: colors.stepper.connector.completed,
+          },
+        },
+        line: {
+          borderWidth: `${stepperSizes.connector.thickness}px`,
+          borderColor: colors.stepper.connector.inactive,
+          '&.Mui-active': {
+            borderColor: colors.stepper.connector.completed,
+          },
+          '&.Mui-completed': {
+            borderColor: colors.stepper.connector.completed,
+          },
+        },
+      },
+    },
+
+    // MobileStepper component customization
+    MuiMobileStepper: {
+      styleOverrides: {
+        root: {
+          padding: `${stepperSizes.mobileStepper.padding}px`,
+          gap: `${stepperSizes.spacing.stepGap}px`,
+        },
+        dots: {
+          gap: `${stepperSizes.mobileStepper.dotGap}px`,
+        },
+        dot: {
+          width: `${stepperSizes.mobileStepper.dotSize}px`,
+          height: `${stepperSizes.mobileStepper.dotSize}px`,
+          backgroundColor: colors.stepper.mobileStepper.dotInactive,
+        },
+        dotActive: {
+          backgroundColor: colors.stepper.mobileStepper.dotActive,
+        },
+        progress: {
+          minWidth: `${stepperSizes.mobileStepper.progressMinWidth}px`,
+          height: `${stepperSizes.mobileStepper.progressHeight}px`,
+          '& .MuiLinearProgress-bar': {
+            backgroundColor: colors.stepper.mobileStepper.progressColor,
+          },
+          '& .MuiLinearProgress-root': {
+            backgroundColor: colors.stepper.mobileStepper.progressBackground,
+          },
+        },
+      },
     },
   },
 });

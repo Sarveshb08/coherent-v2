@@ -36,4 +36,31 @@ declare module '@mui/material/Button' {
   }
 }
 
+// Augment Stepper components with custom props
+declare module '@mui/material/Stepper' {
+  interface StepperOwnProps {
+    textAlignment?: 'left' | 'center';
+    smallScreen?: boolean;
+  }
+}
+
+declare module '@mui/material/Step' {
+  interface StepOwnProps {
+    optional?: boolean;
+  }
+}
+
+declare module '@mui/material/StepLabel' {
+  interface StepLabelOwnProps {
+    textAlignment?: 'left' | 'center';
+    optional?: boolean;
+  }
+}
+
+declare module '@mui/material/MobileStepper' {
+  interface MobileStepperOwnProps {
+    progressType?: 'text' | 'dots' | 'progress';
+  }
+}
+
 export {};
