@@ -30,16 +30,9 @@ export interface TextFieldProps extends Omit<MuiTextFieldProps, 'color' | 'size'
    */
   variant?: TextFieldVariantType;
 
-  /**
-   * Additional CSS classes
-   */
   className?: string;
 }
 
-/**
- * TextField component based on Figma design system
- * Supports Standard, Filled, and Outlined variants with multiple sizes and states
- */
 export const TextField: React.FC<TextFieldProps> = ({
   color = 'primary',
   size = 'medium', 
@@ -47,7 +40,6 @@ export const TextField: React.FC<TextFieldProps> = ({
   className,
   ...props
 }) => {
-  // Map custom ColorVariant to MUI's expected color values
   const getMuiColor = (colorVariant: ColorVariant): MuiTextFieldProps['color'] => {
     switch (colorVariant) {
       case 'primary':

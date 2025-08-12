@@ -23,9 +23,6 @@ export interface CheckboxProps extends Omit<MuiCheckboxProps, 'color' | 'size'> 
    */
   indeterminate?: boolean;
 
-  /**
-   * Additional CSS classes
-   */
   className?: string;
 
   label?: string;

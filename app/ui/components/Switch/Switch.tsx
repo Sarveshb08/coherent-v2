@@ -29,9 +29,6 @@ export interface SwitchProps extends Omit<MuiSwitchProps, 'color' | 'size'> {
    */
   checked?: boolean;
 
-  /**
-   * Callback fired when the state is changed
-   */
   onChange?: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void;
 
   /**
