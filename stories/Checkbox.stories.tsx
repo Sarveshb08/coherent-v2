@@ -2,10 +2,18 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Checkbox } from '../app/ui/components/Checkbox';
 import { ColorVariant, SizeVariant } from '../app/ui/design-tokens';
+import { ThemeProvider } from '../app/ui/theme/ThemeProvider';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
   component: Checkbox,
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     layout: 'centered',
     docs: {

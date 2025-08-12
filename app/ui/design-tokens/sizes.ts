@@ -87,7 +87,3 @@ export const notificationTypography = {
     letterSpacing: '1.21%',
   },
 } as const;
-
-// Export size type for TypeScript
-export type SizeVariant = 'small' | 'medium' | 'large';
-export type TextFieldSizeVariant = 'small' | 'medium';

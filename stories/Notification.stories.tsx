@@ -1,9 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Notification } from '../app/ui/components/Notification';
+import { ThemeProvider } from '../app/ui/theme/ThemeProvider';
 
 const meta: Meta<typeof Notification> = {
   title: 'Components/Notification',
   component: Notification,
+   decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     layout: 'padded',
     docs: {
@@ -31,9 +39,9 @@ const meta: Meta<typeof Notification> = {
       control: 'text',
       description: 'Optional description text for additional details',
     },
-    closable: {
+    onClose: {
       control: 'boolean',
-      description: 'Whether to show a close button',
+      description: 'Whether to show a close button (provide a function to enable)',
     },
   },
 };
@@ -179,7 +187,6 @@ export const Closable: Story = {
     variant: 'filled',
     title: 'Closable Notification',
     description: 'This notification can be closed',
-    closable: true,
     onClose: () => console.log('Notification closed'),
   },
 };

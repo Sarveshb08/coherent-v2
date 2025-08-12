@@ -2,10 +2,18 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { TextField } from '../app/ui/components/TextField';
 import { ColorVariant, TextFieldSizeVariant, TextFieldVariantType } from '../app/ui/design-tokens';
+import { ThemeProvider } from '../app/ui/theme/ThemeProvider';
 
 const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',
   component: TextField,
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     layout: 'centered',
     docs: {
@@ -54,6 +62,10 @@ const meta: Meta<typeof TextField> = {
       control: 'boolean',
       description: 'Whether the TextField should take full width',
     },
+    className: {
+      control: 'text',
+      description: 'CSS classes for the root container',
+    },
   },
   tags: ['autodocs'],
 };
@@ -81,6 +93,50 @@ export const WithValue: Story = {
     ...Default.args,
     value: 'Sample input value',
   },
+};
+
+// With custom styling
+export const WithCustomStyling: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <div>
+        <p className="text-sm font-medium mb-2">Container with padding and border</p>
+        <TextField
+          label="Container Styled"
+          placeholder="This has container styling"
+          className="p-2 border-2 border-dashed border-blue-300 rounded-lg"
+        />
+      </div>
+      
+      <div>
+        <p className="text-sm font-medium mb-2">Container with background</p>
+        <TextField
+          label="Background Container"
+          placeholder="This has background styling"
+          className="bg-gray-100 p-3 rounded-md"
+        />
+      </div>
+      
+      <div>
+        <p className="text-sm font-medium mb-2">Custom margin and width</p>
+        <TextField
+          label="Custom Layout"
+          placeholder="This has custom layout"
+          className="my-4 w-full max-w-xs"
+        />
+      </div>
+      
+      <div>
+        <p className="text-sm font-medium mb-2">Combined styling</p>
+        <TextField
+          label="All Custom"
+          placeholder="Everything is styled"
+          className="p-3 bg-blue-50 border border-info-200 rounded-lg shadow-sm"
+          helperText="This field has custom container styles"
+        />
+      </div>
+    </div>
+  ),
 };
 
 // Error state

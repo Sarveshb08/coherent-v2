@@ -1,5 +1,5 @@
 // Components index file
-// Re-exports all UI components
+// Re-exports all UI components with theme-based styling
 
 export { Checkbox, type CheckboxProps } from './Checkbox';
 export { TextField, type TextFieldProps } from './TextField';

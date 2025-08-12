@@ -1,125 +1,110 @@
-# Copilot Instructions for Repository
+# Component Development Guidelines
 
 ## Overview
-This repository follows a **planning-first approach** for all development work. Copilot must provide detailed implementation plans before writing any code.
+This repository is a design system built with Next.js, TypeScript, Material-UI (MUI), and follows a structured component development workflow.
 
-## Core Workflow Requirements
+## Component Development Workflow
 
-### 1. Planning Phase (MANDATORY)
-When assigned to any issue, Copilot MUST:
-- **NEVER start coding immediately**
-- **ALWAYS provide a detailed implementation plan first**
-- Wait for explicit approval before proceeding to implementation
+### 1. Design Tokens First
+When creating or modifying components, always start with design tokens:
+- Add new tokens to `/app/ui/design-tokens/` (colors, sizes, etc.)
+- Export tokens from `/app/ui/design-tokens/index.ts`
+- Follow existing naming conventions
 
-### 2. Implementation Plan Structure
-Every plan must include:
+### 2. Theme Extension
+If new theme properties are needed:
+- Extend the theme in `/app/ui/theme/index.ts`
+- Add custom theme properties following MUI theme structure
+- Keep styling centralized in theme files
 
-#### Technical Analysis
-- Problem statement analysis
-- Current codebase assessment
-- Dependencies and affected components
-- Potential risks and challenges
+### 3. Type Augmentation
+For TypeScript theme extensions:
+- Update `/app/ui/theme/augmentation.ts`
+- Properly extend MUI interfaces
+- Ensure type safety across the component system
 
-#### Proposed Solution
-- High-level architecture approach
-- Detailed step-by-step implementation plan
-- File changes breakdown (which files will be created/modified/deleted)
-- Code structure and organization
+### 4. Component Structure
+Follow this exact structure for all components:
 
-### 3. Approval Process
-- Use the comment: "📋 **Implementation Plan Ready for Review**"
-- Wait for explicit approval comment before proceeding
-- Address any feedback or requested changes to the plan
-
-### 4. Implementation Phase
-Only proceed with coding after receiving approval comment 
-
-## Code Quality Standards
-
-### Architecture Principles
-- Follow existing codebase patterns and conventions
-- Maintain separation of concerns
-- Implement proper error handling
-- Ensure thread safety where applicable
-- Follow SOLID principles
-
-### Code Style
-- Use consistent naming conventions
-- Add comprehensive comments for complex logic
-- Follow existing indentation and formatting
-- Include proper JSDoc/documentation comments
-- Maintain existing import/export patterns
-
-## Security Guidelines
-- Never hardcode sensitive information
-- Follow secure coding practices
-- Validate all inputs
-- Use parameterized queries for database operations
-- Implement proper authentication/authorization checks
-
-## Performance Considerations
-- Optimize for performance in critical paths
-- Consider memory usage and garbage collection
-- Implement efficient algorithms
-- Use appropriate data structures
-- Consider caching strategies where beneficial
-
-## Error Handling
-- Implement comprehensive error handling
-- Use appropriate error types and messages
-- Log errors appropriately
-- Provide meaningful user feedback
-- Handle edge cases gracefully
-
-## Repository-Specific Guidelines
-
-### Package Manager
-- **ALWAYS use pnpm** for package management
-- Never use npm or yarn in this repository
-- Use `pnpm install`, `pnpm add`, `pnpm remove` for dependency management
-- Use `pnpm run <script>` or `pnpm <script>` for running scripts
-- Respect the locked versions in `pnpm-lock.yaml`
-
-### Technology Stack Considerations
-- Respect existing technology choices
-- Suggest alternatives only when clearly beneficial
-- Maintain consistency with current stack
-- Consider team expertise and preferences
-
-## Escalation Process
-If unclear about requirements:
-1. Ask clarifying questions in issue comments
-2. Wait for clarification before proceeding
-3. Document assumptions if proceeding with incomplete information
-
-## Review and Feedback Integration
-- Address all review comments thoroughly
-- Explain reasoning for implementation choices
-- Be open to alternative approaches
-- Update plans based on feedback
-- Maintain collaborative approach
-
----
-
-## Example Plan Template
-
-```markdown
-## 📋 Implementation Plan for Issue #[NUMBER]
-
-### Problem Analysis
-[Detailed analysis of the issue]
-
-### Proposed Solution
-[High-level approach]
-
-### Implementation Steps
-1. [Step 1 with file changes]
-2. [Step 2 with file changes]
-3. [etc.]
-
-
-### Impact Assessment
-[Risks, breaking changes, performance impact]
-
-📋 **Implementation Plan Ready for Review**
 ```
+ComponentName/
+├── types.ts          # All prop type definitions
+├── ComponentName.tsx # Component implementation
+├── index.ts          # Exports (component + types)
+└── README.md         # Component documentation
+```
+
+### 5. Type Definitions
+- **ALWAYS** create separate `types.ts` files for prop definitions
+- **NEVER** define prop types in component files
+- Extend MUI component props when applicable
+- Include comprehensive JSDoc comments
+
+### 6. Component Implementation Guidelines
+
+#### MUI Usage
+- **ALWAYS** use MUI components as the foundation
+- **NEVER** add style overrides in component files
+- Use MUI's built-in theming system
+- Leverage MUI's sx prop for dynamic styling
+
+#### Style Overrides
+- Add style overrides **ONLY** in `/app/ui/theme/index.ts`
+- Use MUI's component override system
+- Avoid inline styles or CSS modules
+- If MUI fulfills requirements, use it as-is
+
+#### Props and API Design
+- Extend MUI component props using `extends`
+- Add only necessary custom props
+- Provide sensible defaults
+- Include comprehensive prop documentation
+
+## Example Component Implementation
+
+```typescript
+// types.ts
+import { ButtonProps as MuiButtonProps } from '@mui/material';
+
+export interface CustomButtonProps extends MuiButtonProps {
+  /**
+   * Custom variant for the button
+   */
+  customVariant?: 'primary' | 'secondary';
+}
+
+// CustomButton.tsx
+import React from 'react';
+import { Button as MuiButton } from '@mui/material';
+import { CustomButtonProps } from './types';
+
+export const CustomButton: React.FC<CustomButtonProps> = ({
+  customVariant = 'primary',
+  ...props
+}) => {
+  return (
+    <MuiButton
+      variant={customVariant === 'primary' ? 'contained' : 'outlined'}
+      {...props}
+    />
+  );
+};
+
+export default CustomButton;
+
+// index.ts
+export { CustomButton } from './CustomButton';
+export { default } from './CustomButton';
+export type { CustomButtonProps } from './types';
+```
+
+## Package Management
+- **ALWAYS use pnpm** for package management
+- Use `pnpm install`, `pnpm add`, `pnpm remove`
+- Respect locked versions in `pnpm-lock.yaml`
+
+## Code Quality
+- Follow existing patterns and conventions
+- Add comprehensive JSDoc comments
+- Use consistent naming conventions
+- Maintain proper import/export structure
