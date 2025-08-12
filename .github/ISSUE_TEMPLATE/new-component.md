@@ -13,10 +13,7 @@ Create a reusable [] component for the Coherent-v2 design system, following the 
 ## Requirements
 - Implement the [] component using TypeScript, Tailwind CSS, and Material-UI.
 - Fetch and apply relevant design tokens added in the theme.ts for MUI theme provider.
-- The [] component should support:
-  - Primary, secondary, and disabled states
-  - Responsive sizing and proper focus/hover/active states
-  - Accessibility best practices (ARIA, keyboard navigation)
+- The [] component should support all relevant states as per the figma design.
 - Add clear documentation for props, usage, and available variants.
 - Provide Storybook stories for all states and variants.
 - If the current theme is not sufficient, required design tokens can be added following a standard nomenclature and also modify the augmentation.ts to add the new tokens in MUI default theme.
