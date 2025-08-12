@@ -1,2 +1,3 @@
-// Switch component exports
-export { Switch, type SwitchProps } from './Switch';
+export { Switch } from './Switch';
+export { default } from './Switch';
+export type { SwitchProps } from './types';
