@@ -221,11 +221,11 @@ const MobileStepperTemplate = (args: any) => {
   const [activeStep, setActiveStep] = useState(args.activeStep || 0);
   
   const handleNext = () => {
-    setActiveStep((prev) => Math.min(prev + 1, args.steps - 1));
+    setActiveStep((prev: number) => Math.min(prev + 1, args.steps - 1));
   };
   
   const handleBack = () => {
-    setActiveStep((prev) => Math.max(prev - 1, 0));
+    setActiveStep((prev: number) => Math.max(prev - 1, 0));
   };
   
   return (
@@ -247,14 +247,14 @@ const MobileStepperTemplate = (args: any) => {
 
 // Mobile Stepper - Dots variant
 export const MobileStepperDots: Story = {
-  render: MobileStepperTemplate,
+  render: MobileStepperTemplate as any,
   args: {
     activeStep: 1,
     steps: 5,
     variant: 'dots',
     backButtonText: 'Back',
     nextButtonText: 'Next',
-  },
+  } as any,
   parameters: {
     docs: {
       description: {
@@ -266,26 +266,26 @@ export const MobileStepperDots: Story = {
 
 // Mobile Stepper - Text variant
 export const MobileStepperText: Story = {
-  render: MobileStepperTemplate,
+  render: MobileStepperTemplate as any,
   args: {
     activeStep: 2,
     steps: 5,
     variant: 'text',
     backButtonText: 'Previous',
     nextButtonText: 'Continue',
-  },
+  } as any,
 };
 
 // Mobile Stepper - Progress variant
 export const MobileStepperProgress: Story = {
-  render: MobileStepperTemplate,
+  render: MobileStepperTemplate as any,
   args: {
     activeStep: 1,
     steps: 4,
     variant: 'progress',
     backButtonText: 'Back',
     nextButtonText: 'Next',
-  },
+  } as any,
 };
 
 // Responsive Stepper
@@ -293,11 +293,11 @@ const ResponsiveTemplate = (args: any) => {
   const [activeStep, setActiveStep] = useState(args.activeStep || 0);
   
   const handleNext = () => {
-    setActiveStep((prev) => Math.min(prev + 1, args.steps.length - 1));
+    setActiveStep((prev: number) => Math.min(prev + 1, args.steps.length - 1));
   };
   
   const handleBack = () => {
-    setActiveStep((prev) => Math.max(prev - 1, 0));
+    setActiveStep((prev: number) => Math.max(prev - 1, 0));
   };
   
   return (
@@ -323,7 +323,7 @@ const ResponsiveTemplate = (args: any) => {
 };
 
 export const Responsive: Story = {
-  render: ResponsiveTemplate,
+  render: ResponsiveTemplate as any,
   args: {
     activeStep: 1,
     steps: basicSteps,
@@ -332,7 +332,7 @@ export const Responsive: Story = {
     textAlignment: 'left',
     nextButtonText: 'Continue',
     backButtonText: 'Back',
-  },
+  } as any,
   parameters: {
     docs: {
       description: {
