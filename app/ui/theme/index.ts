@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { colors, sizes, borderRadius, strokeWeights, textFieldSizes, notificationSizes } from '../design-tokens';
+import { colors, sizes, borderRadius, strokeWeights, textFieldSizes, notificationSizes, speedDialSizes } from '../design-tokens';
 
 
 export const theme = createTheme({
@@ -93,6 +93,40 @@ export const theme = createTheme({
           },
         },
       ],
+    },
+
+    // SpeedDial component customization
+    MuiSpeedDial: {
+      styleOverrides: {
+        root: {
+          '& .MuiSpeedDial-fab': {
+            width: speedDialSizes.main.size,
+            height: speedDialSizes.main.size,
+            backgroundColor: colors.primary.main,
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: colors.primary.main,
+              filter: 'brightness(1.1)',
+            },
+          },
+        },
+      },
+    },
+
+    MuiSpeedDialAction: {
+      styleOverrides: {
+        fab: {
+          width: speedDialSizes.action.size,
+          height: speedDialSizes.action.size,
+          backgroundColor: colors.background.white,
+          color: colors.text.primary,
+          boxShadow: '0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)',
+          '&:hover': {
+            backgroundColor: colors.background.white,
+            filter: 'brightness(0.95)',
+          },
+        },
+      },
     },
   },
 });
