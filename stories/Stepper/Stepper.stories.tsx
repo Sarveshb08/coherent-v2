@@ -1,12 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Stepper, MobileStepper, ResponsiveStepper } from '../../app/ui/components/Stepper';
 import { StepData } from '../../app/ui/components/Stepper/types';
+import { ThemeProvider } from '../../app/ui/theme/ThemeProvider';
 import { useState } from 'react';
 import { Box, Typography, Paper } from '@mui/material';
 
 const meta = {
   title: 'Components/Stepper',
   component: Stepper,
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     layout: 'padded',
     docs: {

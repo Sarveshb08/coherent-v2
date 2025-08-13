@@ -34,6 +34,7 @@ const StepComponent: React.FC<StepComponentProps> = ({
         error={stepData.error}
         icon={stepData.icon}
         optional={stepData.optional ? <span>{stepData.optional}</span> : undefined}
+        data-text-alignment={textAlignment}
       >
         {stepData.label}
       </MuiStepLabel>
@@ -70,12 +71,22 @@ export const Stepper: React.FC<StepperProps> = ({
   className,
   ...props
 }) => {
+  const theme = useTheme();
+  
   return (
     <MuiStepper
       {...props}
       activeStep={activeStep}
       orientation={orientation}
       className={className}
+      alternativeLabel={textAlignment === 'center' && orientation === 'horizontal'}
+      sx={{
+        ...(textAlignment === 'center' && orientation === 'horizontal' && {
+          '& .MuiStepLabel-labelContainer': {
+            textAlign: 'center',
+          },
+        }),
+      }}
     >
       {steps.map((step, index) => (
         <StepComponent
@@ -119,6 +130,8 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
   className,
   ...props
 }) => {
+  const theme = useTheme();
+  
   // For text variant, we'll use a custom implementation
   if (variant === 'text') {
     return (
@@ -128,7 +141,7 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center',
-          padding: 1,
+          padding: `${theme.spacing(1)}`,
         }}
       >
         <Button
@@ -136,11 +149,19 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
           onClick={onBack}
           disabled={backDisabled}
           startIcon={<KeyboardArrowLeft />}
+          sx={{ color: backDisabled ? theme.palette.text.disabled : theme.palette.primary.main }}
         >
           {backButtonText}
         </Button>
         
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ 
+          display: 'flex', 
+          alignItems: 'center',
+          color: theme.palette.stepper?.mobileStepper.text,
+          fontFamily: theme.typography.fontFamily,
+          fontSize: '14px',
+          fontWeight: 400,
+        }}>
           {activeStep + 1}/{steps}
         </Box>
         
@@ -149,6 +170,7 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
           onClick={onNext}
           disabled={nextDisabled}
           endIcon={<KeyboardArrowRight />}
+          sx={{ color: nextDisabled ? theme.palette.text.disabled : theme.palette.primary.main }}
         >
           {nextButtonText}
         </Button>
@@ -165,7 +187,7 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center',
-          padding: 1,
+          padding: `${theme.spacing(1)}`,
           gap: 2,
         }}
       >
@@ -174,6 +196,7 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
           onClick={onBack}
           disabled={backDisabled}
           startIcon={<KeyboardArrowLeft />}
+          sx={{ color: backDisabled ? theme.palette.text.disabled : theme.palette.primary.main }}
         >
           {backButtonText}
         </Button>
@@ -185,6 +208,10 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
             flex: 1,
             height: 4,
             borderRadius: 2,
+            backgroundColor: theme.palette.stepper?.mobileStepper.progressBackground,
+            '& .MuiLinearProgress-bar': {
+              backgroundColor: theme.palette.stepper?.mobileStepper.progressColor,
+            },
           }}
         />
         
@@ -193,6 +220,7 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
           onClick={onNext}
           disabled={nextDisabled}
           endIcon={<KeyboardArrowRight />}
+          sx={{ color: nextDisabled ? theme.palette.text.disabled : theme.palette.primary.main }}
         >
           {nextButtonText}
         </Button>
@@ -209,12 +237,22 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
       position="static"
       activeStep={activeStep}
       className={className}
+      sx={{
+        backgroundColor: 'transparent',
+        '& .MuiMobileStepper-dot': {
+          backgroundColor: theme.palette.stepper?.mobileStepper.dotInactive,
+        },
+        '& .MuiMobileStepper-dotActive': {
+          backgroundColor: theme.palette.stepper?.mobileStepper.dotActive,
+        },
+      }}
       nextButton={
         <Button
           size="small"
           onClick={onNext}
           disabled={nextDisabled}
           endIcon={<KeyboardArrowRight />}
+          sx={{ color: nextDisabled ? theme.palette.text.disabled : theme.palette.primary.main }}
         >
           {nextButtonText}
         </Button>
@@ -225,6 +263,7 @@ export const MobileStepper: React.FC<MobileStepperProps> = ({
           onClick={onBack}
           disabled={backDisabled}
           startIcon={<KeyboardArrowLeft />}
+          sx={{ color: backDisabled ? theme.palette.text.disabled : theme.palette.primary.main }}
         >
           {backButtonText}
         </Button>

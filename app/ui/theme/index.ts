@@ -45,6 +45,35 @@ export const theme = createTheme({
       default: colors.background.white,
       paper: colors.background.white,
     },
+    // Add stepper colors to palette for easy access
+    stepper: {
+      completed: {
+        background: colors.stepper.completed.background,
+        icon: colors.stepper.completed.icon,
+        text: colors.stepper.completed.text,
+      },
+      active: {
+        background: colors.stepper.active.background,
+        text: colors.stepper.active.text,
+        stepText: colors.stepper.active.stepText,
+      },
+      inactive: {
+        background: colors.stepper.inactive.background,
+        text: colors.stepper.inactive.text,
+        stepText: colors.stepper.inactive.stepText,
+      },
+      connector: {
+        completed: colors.stepper.connector.completed,
+        inactive: colors.stepper.connector.inactive,
+      },
+      mobileStepper: {
+        dotActive: colors.stepper.mobileStepper.dotActive,
+        dotInactive: colors.stepper.mobileStepper.dotInactive,
+        progressColor: colors.stepper.mobileStepper.progressColor,
+        progressBackground: colors.stepper.mobileStepper.progressBackground,
+        text: colors.stepper.mobileStepper.text,
+      },
+    },
   },
   typography: {
     fontFamily: 'Roboto, sans-serif',
@@ -98,21 +127,21 @@ export const theme = createTheme({
     // Stepper component customization
     MuiStepper: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           '&.MuiStepper-horizontal': {
             gap: `${stepperSizes.spacing.stepGap}px`,
           },
           '&.MuiStepper-vertical': {
             gap: `${stepperSizes.spacing.stepGap}px`,
           },
-        },
+        }),
       },
     },
 
     // StepIcon component customization
     MuiStepIcon: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           width: `${stepperSizes.stepIcon.size}px`,
           height: `${stepperSizes.stepIcon.size}px`,
           borderRadius: `${stepperSizes.stepIcon.borderRadius}px`,
@@ -120,18 +149,18 @@ export const theme = createTheme({
           fontFamily: stepperTypography.stepNumber.fontFamily,
           fontWeight: stepperTypography.stepNumber.fontWeight,
           '&.Mui-active': {
-            backgroundColor: colors.stepper.active.background,
-            color: colors.stepper.active.text,
+            backgroundColor: theme.palette.stepper?.active.background,
+            color: theme.palette.stepper?.active.text,
           },
           '&.Mui-completed': {
-            backgroundColor: colors.stepper.completed.background,
-            color: colors.stepper.completed.icon,
+            backgroundColor: theme.palette.stepper?.completed.background,
+            color: theme.palette.stepper?.completed.icon,
           },
           '&:not(.Mui-active):not(.Mui-completed)': {
-            backgroundColor: colors.stepper.inactive.background,
-            color: colors.stepper.inactive.text,
+            backgroundColor: theme.palette.stepper?.inactive.background,
+            color: theme.palette.stepper?.inactive.text,
           },
-        },
+        }),
         text: {
           fontSize: `${stepperSizes.stepIcon.fontSize}px`,
           fontFamily: stepperTypography.stepNumber.fontFamily,
@@ -143,26 +172,26 @@ export const theme = createTheme({
     // StepLabel component customization
     MuiStepLabel: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           '&[data-text-alignment="center"]': {
             alignItems: 'center',
             textAlign: 'center',
           },
-        },
-        label: {
+        }),
+        label: ({ theme }) => ({
           fontFamily: stepperTypography.stepTitle.fontFamily,
           fontWeight: stepperTypography.stepTitle.fontWeight,
           fontSize: stepperTypography.stepTitle.fontSize,
           lineHeight: stepperTypography.stepTitle.lineHeight,
           letterSpacing: stepperTypography.stepTitle.letterSpacing,
           '&.Mui-active': {
-            color: colors.stepper.active.stepText,
+            color: theme.palette.stepper?.active.stepText,
           },
           '&.Mui-completed': {
-            color: colors.stepper.completed.text,
+            color: theme.palette.stepper?.completed.text,
           },
           '&:not(.Mui-active):not(.Mui-completed)': {
-            color: colors.stepper.inactive.stepText,
+            color: theme.palette.stepper?.inactive.stepText,
           },
           '&[data-text-alignment="center"]': {
             fontFamily: stepperTypography.stepTitleCenter.fontFamily,
@@ -180,62 +209,84 @@ export const theme = createTheme({
             letterSpacing: stepperTypography.stepTitleInactive.letterSpacing,
             textAlign: 'center',
           },
-        },
+        }),
+        alternativeLabel: ({ theme }) => ({
+          '& .MuiStepLabel-labelContainer': {
+            textAlign: 'center',
+          },
+        }),
       },
     },
 
     // StepConnector component customization
     MuiStepConnector: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           '&.Mui-active .MuiStepConnector-line': {
-            borderColor: colors.stepper.connector.completed,
+            borderColor: theme.palette.stepper?.connector.completed,
           },
           '&.Mui-completed .MuiStepConnector-line': {
-            borderColor: colors.stepper.connector.completed,
+            borderColor: theme.palette.stepper?.connector.completed,
           },
-        },
-        line: {
+        }),
+        line: ({ theme }) => ({
           borderWidth: `${stepperSizes.connector.thickness}px`,
-          borderColor: colors.stepper.connector.inactive,
+          borderColor: theme.palette.stepper?.connector.inactive,
           '&.Mui-active': {
-            borderColor: colors.stepper.connector.completed,
+            borderColor: theme.palette.stepper?.connector.completed,
           },
           '&.Mui-completed': {
-            borderColor: colors.stepper.connector.completed,
+            borderColor: theme.palette.stepper?.connector.completed,
           },
-        },
+        }),
       },
     },
 
     // MobileStepper component customization
     MuiMobileStepper: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           padding: `${stepperSizes.mobileStepper.padding}px`,
           gap: `${stepperSizes.spacing.stepGap}px`,
-        },
+          backgroundColor: 'transparent',
+        }),
         dots: {
           gap: `${stepperSizes.mobileStepper.dotGap}px`,
         },
-        dot: {
+        dot: ({ theme }) => ({
           width: `${stepperSizes.mobileStepper.dotSize}px`,
           height: `${stepperSizes.mobileStepper.dotSize}px`,
-          backgroundColor: colors.stepper.mobileStepper.dotInactive,
-        },
-        dotActive: {
-          backgroundColor: colors.stepper.mobileStepper.dotActive,
-        },
-        progress: {
+          backgroundColor: theme.palette.stepper?.mobileStepper.dotInactive,
+        }),
+        dotActive: ({ theme }) => ({
+          backgroundColor: theme.palette.stepper?.mobileStepper.dotActive,
+        }),
+        progress: ({ theme }) => ({
           minWidth: `${stepperSizes.mobileStepper.progressMinWidth}px`,
           height: `${stepperSizes.mobileStepper.progressHeight}px`,
           '& .MuiLinearProgress-bar': {
-            backgroundColor: colors.stepper.mobileStepper.progressColor,
+            backgroundColor: theme.palette.stepper?.mobileStepper.progressColor,
           },
           '& .MuiLinearProgress-root': {
-            backgroundColor: colors.stepper.mobileStepper.progressBackground,
+            backgroundColor: theme.palette.stepper?.mobileStepper.progressBackground,
           },
-        },
+        }),
+      },
+    },
+
+    // LinearProgress component customization for stepper progress variant
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&.MuiLinearProgress-colorPrimary': {
+            backgroundColor: theme.palette.stepper?.mobileStepper.progressBackground,
+          },
+        }),
+        bar: ({ theme }) => ({
+          '&.MuiLinearProgress-barColorPrimary': {
+            backgroundColor: theme.palette.stepper?.mobileStepper.progressColor,
+          },
+        }),
       },
     },
   },
