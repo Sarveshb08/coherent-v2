@@ -115,8 +115,3 @@ export const colors = {
     },
   },
 } as const;
-
-// Export individual color types for TypeScript
-export type ColorVariant = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'default';
-export type NotificationSeverity = 'error' | 'warning' | 'info' | 'success';
-export type NotificationVariant = 'filled' | 'outlined' | 'standard';
