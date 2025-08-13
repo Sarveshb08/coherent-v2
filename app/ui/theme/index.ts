@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { colors, sizes, borderRadius, strokeWeights, textFieldSizes, notificationSizes } from '../design-tokens';
+import { colors, sizes, borderRadius, strokeWeights, textFieldSizes, notificationSizes, stepperSizes, stepperTypography } from '../design-tokens';
 
 
 export const theme = createTheme({
@@ -44,6 +44,18 @@ export const theme = createTheme({
     background: {
       default: colors.background.white,
       paper: colors.background.white,
+    },
+    stepper: {
+      connector: colors.stepper.connector,
+      activeConnector: colors.stepper.activeConnector,
+      numberBackground: colors.stepper.numberBackground,
+      activeNumberBackground: colors.stepper.activeNumberBackground,
+      completedNumberBackground: colors.stepper.completedNumberBackground,
+      numberText: colors.stepper.numberText,
+      completedText: colors.stepper.completedText,
+      activeText: colors.stepper.activeText,
+      inactiveText: colors.stepper.inactiveText,
+      optionalText: colors.stepper.optionalText,
     },
   },
   typography: {
@@ -93,6 +105,94 @@ export const theme = createTheme({
           },
         },
       ],
+    },
+
+    // Stepper component customization
+    MuiStepper: {
+      styleOverrides: {
+        root: {
+          '& .MuiStepConnector-line': {
+            borderColor: colors.stepper.connector,
+            borderTopWidth: 1,
+          },
+          '& .MuiStepConnector-root.Mui-active .MuiStepConnector-line': {
+            borderColor: colors.stepper.activeConnector,
+          },
+          '& .MuiStepConnector-root.Mui-completed .MuiStepConnector-line': {
+            borderColor: colors.stepper.activeConnector,
+          },
+        },
+        vertical: {
+          '& .MuiStepConnector-line': {
+            borderLeftWidth: 1,
+            borderTopWidth: 0,
+            minHeight: 24,
+          },
+        },
+      },
+    },
+
+    MuiStepIcon: {
+      styleOverrides: {
+        root: {
+          width: stepperSizes.stepIcon.size,
+          height: stepperSizes.stepIcon.size,
+          borderRadius: stepperSizes.stepIcon.borderRadius,
+          backgroundColor: colors.stepper.numberBackground,
+          color: colors.stepper.numberText,
+          fontFamily: stepperTypography.stepNumber.fontFamily,
+          fontWeight: stepperTypography.stepNumber.fontWeight,
+          fontSize: stepperTypography.stepNumber.fontSize,
+          '&.Mui-active': {
+            backgroundColor: colors.stepper.activeNumberBackground,
+          },
+          '&.Mui-completed': {
+            backgroundColor: colors.stepper.completedNumberBackground,
+          },
+        },
+      },
+    },
+
+    MuiStepLabel: {
+      styleOverrides: {
+        label: {
+          fontFamily: stepperTypography.stepLabel.fontFamily,
+          fontWeight: stepperTypography.stepLabel.fontWeight,
+          fontSize: stepperTypography.stepLabel.fontSize,
+          lineHeight: stepperTypography.stepLabel.lineHeight,
+          letterSpacing: stepperTypography.stepLabel.letterSpacing,
+          '&.Mui-active': {
+            color: colors.stepper.activeText,
+          },
+          '&.Mui-completed': {
+            color: colors.stepper.completedText,
+          },
+          '&.Mui-disabled': {
+            color: colors.stepper.inactiveText,
+          },
+        },
+      },
+    },
+
+    MuiMobileStepper: {
+      styleOverrides: {
+        root: {
+          padding: stepperSizes.mobileStepper.padding,
+          backgroundColor: 'transparent',
+        },
+        dot: {
+          width: stepperSizes.mobileStepper.dotSize,
+          height: stepperSizes.mobileStepper.dotSize,
+          margin: `0 ${parseInt(stepperSizes.mobileStepper.dotGap) / 2}px`,
+        },
+        dotActive: {
+          backgroundColor: colors.stepper.activeConnector,
+        },
+        progress: {
+          width: stepperSizes.mobileStepper.progressMinWidth,
+          minWidth: stepperSizes.mobileStepper.progressMinWidth,
+        },
+      },
     },
   },
 });

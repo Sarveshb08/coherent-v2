@@ -4,10 +4,34 @@ import '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface Palette {
     tertiary?: Palette['primary'];
+    stepper?: {
+      connector: string;
+      activeConnector: string;
+      numberBackground: string;
+      activeNumberBackground: string;
+      completedNumberBackground: string;
+      numberText: string;
+      completedText: string;
+      activeText: string;
+      inactiveText: string;
+      optionalText: string;
+    };
   }
 
   interface PaletteOptions {
     tertiary?: PaletteOptions['primary'];
+    stepper?: {
+      connector: string;
+      activeConnector: string;
+      numberBackground: string;
+      activeNumberBackground: string;
+      completedNumberBackground: string;
+      numberText: string;
+      completedText: string;
+      activeText: string;
+      inactiveText: string;
+      optionalText: string;
+    };
   }
 }
 

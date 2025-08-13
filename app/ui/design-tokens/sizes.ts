@@ -87,3 +87,84 @@ export const notificationTypography = {
     letterSpacing: '1.21%',
   },
 } as const;
+
+// Type definitions
+export type SizeVariant = 'small' | 'medium' | 'large';
+export type TextFieldSizeVariant = 'small' | 'medium';
+export type TextFieldVariantType = 'standard' | 'filled' | 'outlined';
+
+// Stepper component sizes from Figma
+export const stepperSizes = {
+  stepIcon: {
+    size: '24px',                      // Step icon size (24x24px)
+    padding: '7px',                    // Padding inside step icon for number
+    borderRadius: '100px',             // Circular step icon
+  },
+  connector: {
+    height: '1px',                     // Connector line height
+    minWidth: '24px',                  // Minimum connector width
+  },
+  spacing: {
+    stepGap: '8px',                    // Gap between step icon and content
+    contentGap: '8px',                 // Gap between steps in vertical layout
+    buttonGap: '8px',                  // Gap between action buttons
+  },
+  mobileStepper: {
+    padding: '8px',                    // MobileStepper container padding
+    buttonPadding: '5px 8px 4px',      // Button padding in mobile stepper
+    dotSize: '8px',                    // Progress dot size
+    dotGap: '4px',                     // Gap between progress dots
+    progressHeight: '4px',             // Linear progress height
+    progressMinWidth: '200px',         // Minimum width for progress bar
+  },
+  desktopStepper: {
+    containerPadding: '24px',          // Container padding
+    contentPadding: '24px 0px',        // Content area padding
+    buttonContainerGap: '8px',         // Gap in button container
+  },
+} as const;
+
+// Stepper typography from Figma
+export const stepperTypography = {
+  stepLabel: {
+    fontFamily: 'Roboto',
+    fontWeight: 500,                   // Medium weight for step labels
+    fontSize: '14px',
+    lineHeight: '1.57',
+    letterSpacing: '0.1px',
+  },
+  optionalText: {
+    fontFamily: 'Roboto',
+    fontWeight: 400,                   // Regular weight for optional text
+    fontSize: '12px',
+    lineHeight: '1.66',
+    letterSpacing: '0.4px',
+  },
+  stepNumber: {
+    fontFamily: 'Proxima Nova',
+    fontWeight: 700,                   // Bold weight for step numbers
+    fontSize: '18px',
+    lineHeight: '1',                   // 100% line height
+  },
+  mobileButton: {
+    fontFamily: 'Roboto',
+    fontWeight: 500,                   // Medium weight for mobile buttons
+    fontSize: '13px',
+    lineHeight: '22px',
+    letterSpacing: '0.46px',
+    textTransform: 'uppercase',
+  },
+  mobileCounter: {
+    fontFamily: 'Roboto',
+    fontWeight: 400,                   // Regular weight for counter
+    fontSize: '14px',
+    lineHeight: '1.43',
+    letterSpacing: '0.17px',
+  },
+} as const;
+
+// Stepper type definitions
+export type StepperVariant = 'text' | 'dots' | 'progress';
+export type StepperOrientation = 'horizontal' | 'vertical';
+export type StepState = 'active' | 'completed' | 'disabled';
+export type StepperAlignment = 'left' | 'center';
