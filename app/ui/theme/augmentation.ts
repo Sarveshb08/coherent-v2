@@ -4,10 +4,66 @@ import '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface Palette {
     tertiary?: Palette['primary'];
+    stepper?: {
+      completed: {
+        background: string;
+        icon: string;
+        text: string;
+      };
+      active: {
+        background: string;
+        text: string;
+        stepText: string;
+      };
+      inactive: {
+        background: string;
+        text: string;
+        stepText: string;
+      };
+      connector: {
+        completed: string;
+        inactive: string;
+      };
+      mobileStepper: {
+        dotActive: string;
+        dotInactive: string;
+        progressColor: string;
+        progressBackground: string;
+        text: string;
+      };
+    };
   }
 
   interface PaletteOptions {
     tertiary?: PaletteOptions['primary'];
+    stepper?: {
+      completed?: {
+        background?: string;
+        icon?: string;
+        text?: string;
+      };
+      active?: {
+        background?: string;
+        text?: string;
+        stepText?: string;
+      };
+      inactive?: {
+        background?: string;
+        text?: string;
+        stepText?: string;
+      };
+      connector?: {
+        completed?: string;
+        inactive?: string;
+      };
+      mobileStepper?: {
+        dotActive?: string;
+        dotInactive?: string;
+        progressColor?: string;
+        progressBackground?: string;
+        text?: string;
+      };
+    };
   }
 }
 
@@ -33,6 +89,33 @@ declare module '@mui/material/TextField' {
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     tertiary: true;
+  }
+}
+
+// Augment Stepper components with custom props
+declare module '@mui/material/Stepper' {
+  interface StepperOwnProps {
+    textAlignment?: 'left' | 'center';
+    smallScreen?: boolean;
+  }
+}
+
+declare module '@mui/material/Step' {
+  interface StepOwnProps {
+    optional?: boolean;
+  }
+}
+
+declare module '@mui/material/StepLabel' {
+  interface StepLabelOwnProps {
+    textAlignment?: 'left' | 'center';
+    optional?: boolean;
+  }
+}
+
+declare module '@mui/material/MobileStepper' {
+  interface MobileStepperOwnProps {
+    progressType?: 'text' | 'dots' | 'progress';
   }
 }
 

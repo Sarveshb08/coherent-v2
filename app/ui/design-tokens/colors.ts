@@ -114,6 +114,37 @@ export const colors = {
       icon: '#2E7D32',           // Success icon color for outlined/standard
     },
   },
+
+  // Stepper-specific colors from Figma
+  stepper: {
+    // Step states colors
+    completed: {
+      background: '#00A331',         // Completed step background (green)
+      icon: '#FFFFFF',               // Completed step icon color (white checkmark)
+      text: 'rgba(0, 0, 0, 0.87)',   // Completed step text
+    },
+    active: {
+      background: '#6930CA',         // Active step background (primary purple)
+      text: '#FFFFFF',               // Active step text (white)
+      stepText: 'rgba(0, 0, 0, 0.87)', // Active step title text
+    },
+    inactive: {
+      background: '#A6A7B0',         // Inactive step background (gray)
+      text: '#FFFFFF',               // Inactive step text (white)
+      stepText: 'rgba(0, 0, 0, 0.6)', // Inactive step title text (secondary)
+    },
+    connector: {
+      completed: '#6930CA',          // Completed connector color (primary purple)
+      inactive: '#A6A7B0',           // Inactive connector color (gray)
+    },
+    mobileStepper: {
+      dotActive: '#6930CA',          // Active dot color (primary purple) 
+      dotInactive: 'rgba(0, 0, 0, 0.38)', // Inactive dot color
+      progressColor: '#6930CA',      // Progress bar color (primary purple)
+      progressBackground: 'rgba(105, 48, 202, 0.6)', // Progress bar background with opacity
+      text: '#2B2D42',               // Mobile stepper text color
+    },
+  },
 } as const;
 
 // Export individual color types for TypeScript

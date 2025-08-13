@@ -87,3 +87,89 @@ export const notificationTypography = {
     letterSpacing: '1.21%',
   },
 } as const;
+
+// Export size type for TypeScript
+export type SizeVariant = 'small' | 'medium' | 'large';
+
+// Stepper component sizes from Figma
+export const stepperSizes = {
+  stepIcon: {
+    size: 24,                    // Step icon size (24x24px)
+    borderRadius: 12,            // Circular step icon border radius (50% of 24px)
+    iconSize: 20,                // Icon size within step icon container
+    fontSize: 18,                // Font size for step numbers
+  },
+  connector: {
+    thickness: 1,                // Connector line thickness
+  },
+  spacing: {
+    stepGap: 8,                  // Gap between steps
+    contentGap: 16,              // Gap between step icon and step content (vertical)
+    optionalGap: 4,              // Gap between step title and optional text
+  },
+  mobileStepper: {
+    padding: 8,                  // Mobile stepper container padding
+    buttonPadding: '4px 5px',    // Mobile stepper button padding
+    dotSize: 8,                  // Dot size for dots variant
+    dotGap: 4,                   // Gap between dots
+    progressHeight: 4,           // Linear progress height
+    progressMinWidth: 200,       // Minimum width for progress bar
+  },
+} as const;
+
+// Stepper typography from Figma
+export const stepperTypography = {
+  stepTitle: {
+    fontFamily: 'Roboto',
+    fontWeight: 500,
+    fontSize: '14px',
+    lineHeight: '1.57em',
+    letterSpacing: '0.71%',
+  },
+  stepTitleCenter: {
+    fontFamily: 'Roboto', 
+    fontWeight: 500,
+    fontSize: '14px',
+    lineHeight: '1.57em',
+    letterSpacing: '0.71%',
+    textAlign: 'center',
+  },
+  stepTitleInactive: {
+    fontFamily: 'Roboto',
+    fontWeight: 400,
+    fontSize: '14px', 
+    lineHeight: '1.43em',
+    letterSpacing: '1.21%',
+    textAlign: 'center',
+  },
+  optionalText: {
+    fontFamily: 'Roboto',
+    fontWeight: 400,
+    fontSize: '12px',
+    lineHeight: '1.66em',
+    letterSpacing: '3.33%',
+  },
+  stepNumber: {
+    fontFamily: 'Proxima Nova',
+    fontWeight: 700,
+    fontSize: '18px',
+    lineHeight: '1.22em',
+  },
+  mobileStepperText: {
+    fontFamily: 'Roboto',
+    fontWeight: 400,
+    fontSize: '14px',
+    lineHeight: '1.43em',
+    letterSpacing: '1.21%',
+  },
+} as const;
+
+// Export TextField specific types
+export type TextFieldSizeVariant = 'small' | 'medium';
+export type TextFieldVariantType = 'outlined' | 'filled' | 'standard';
+
+// Export Stepper specific types
+export type StepperOrientation = 'horizontal' | 'vertical';
+export type StepperTextAlignment = 'left' | 'center';
+export type StepState = 'default' | 'active' | 'completed' | 'error';
+export type MobileStepperVariant = 'text' | 'dots' | 'progress';
