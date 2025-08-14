@@ -149,6 +149,8 @@ Each override file should contain:
 - Apply wrong colors from misreading design
 - Skip the analysis phase and jump to implementation
 - Use hardcoded values in theme overrides
+- **Add styling that is NOT explicitly shown in the Figma design**
+- **Make assumptions about "standard" UI patterns not present in the design**
 
 ✅ **DO:**
 - Always analyze MUI capabilities first
@@ -157,4 +159,6 @@ Each override file should contain:
 - Leverage MUI's accessibility features
 - Create minimal, focused customizations
 - Document decision rationale
+- **Only style what is visually present in the Figma design**
+- **Question any styling that feels like an assumption rather than design requirement**
 

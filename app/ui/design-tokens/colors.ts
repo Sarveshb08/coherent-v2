@@ -122,4 +122,13 @@ export const colors = {
     activeBackground: '#6930ca', // secondary/main for active steps
     completedBackground: '#00a331', // success/light for completed steps
   },
+
+  // Tabs-specific colors from Figma
+  tabs: {
+    indicator: '#461E96',        // Primary color for active tab indicator
+    textActive: '#461E96',       // Active tab text color  
+    textInactive: 'rgba(0, 0, 0, 0.6)', // Inactive tab text color
+    scrollButton: '#6930CA',     // Scroll button color
+    scrollButtonDisabled: 'rgba(105, 48, 202, 0.38)', // Disabled scroll button
+  },
 } as const;
