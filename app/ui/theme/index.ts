@@ -11,7 +11,8 @@ import {
   StepConnectorOverrides,
   StepIconOverrides,
   TabsOverrides,
-  TabOverrides
+  TabOverrides,
+  ChipOverrides
 } from './overrides';
 
 
@@ -25,8 +26,8 @@ export const theme = createTheme({
     },
     secondary: {
       main: colors.secondary.main,        // #6930CA
-      light: colors.secondary.hover,      // rgba(105, 48, 202, 0.04)
-      dark: colors.secondary.border,      // #6930CA
+      light: colors.secondary.hover,      // #6930ca0a (exact from Figma)
+      dark: colors.secondary.focus,       // #6930ca4d (exact from Figma)
       contrastText: '#fff',               // White text for better contrast
     },
     error: {
@@ -78,6 +79,7 @@ export const theme = createTheme({
     MuiStepIcon: StepIconOverrides,
     MuiTabs: TabsOverrides,
     MuiTab: TabOverrides,
+    MuiChip: ChipOverrides,
   },
 });
 

@@ -36,4 +36,18 @@ declare module '@mui/material/Button' {
   }
 }
 
+// Augment Chip props to include secondary color variants
+declare module '@mui/material/Chip' {
+  interface ChipPropsColorOverrides {
+    // Enable default MUI colors that may be disabled
+    primary: true;
+    secondary: true;
+    error: true;
+    warning: true;
+    info: true;
+    success: true;
+    default: true;
+  }
+}
+
 export {};

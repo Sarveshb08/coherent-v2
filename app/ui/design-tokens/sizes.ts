@@ -149,3 +149,28 @@ export const tabsTypography = {
   lineHeight: 1.75,            // Line height for readability
   textTransform: 'none' as const, // No uppercase transformation
 } as const;
+
+// Chip-specific sizes and typography from Figma
+export const chipSizes = {
+  small: {
+    height: 24,                // Small chip height
+    padding: '4px 12px',       // Small chip padding
+    fontSize: '13px',          // Label font size from Figma
+    avatarSize: 18,            // Small avatar size
+    deleteIconSize: 18,        // Small delete icon size
+  },
+  medium: {
+    height: 32,                // Medium chip height
+    padding: '6px 16px',       // Medium chip padding
+    fontSize: '13px',          // Label font size from Figma (same for both sizes)
+    avatarSize: 24,            // Medium avatar size
+    deleteIconSize: 20,        // Medium delete icon size
+  },
+} as const;
+
+export const chipTypography = {
+  fontFamily: 'Roboto',        // Font family from Figma
+  fontSize: '13px',            // Font size from Figma chip/label
+  fontWeight: 400,             // Regular weight from Figma
+  lineHeight: '18px',          // Line height from Figma chip/label
+} as const;
