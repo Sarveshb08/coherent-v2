@@ -50,7 +50,17 @@ export const StepLabelOverrides: Components['MuiStepLabel'] = {
 export const StepConnectorOverrides: Components['MuiStepConnector'] = {
   styleOverrides: {
     root: {
-      // Base connector styling
+      // Active and completed states using correct MUI syntax
+      '&.Mui-active': {
+        '& .MuiStepConnector-line': {
+          borderColor: colors.stepper.activeBackground, // Active connector color (secondary)
+        },
+      },
+      '&.Mui-completed': {
+        '& .MuiStepConnector-line': {
+          borderColor: colors.stepper.completedBackground, // Completed connector color (success/light)
+        },
+      },
     },
     line: {
       borderColor: colors.stepper.connector, // Inactive connector color from Figma
@@ -62,17 +72,6 @@ export const StepConnectorOverrides: Components['MuiStepConnector'] = {
     lineVertical: {
       borderLeftWidth: `${stepperSizes.connectorWidth}px`,
       minHeight: `${stepperSizes.minConnectorHeight}px`,
-    },
-    // Active and completed states
-    active: {
-      '& .MuiStepConnector-line': {
-        borderColor: colors.stepper.activeBackground, // Active connector color (secondary)
-      },
-    },
-    completed: {
-      '& .MuiStepConnector-line': {
-        borderColor: colors.stepper.completedBackground, // Completed connector color (success/light)
-      },
     },
   },
 };
