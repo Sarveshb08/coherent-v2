@@ -11,7 +11,8 @@ import {
   StepConnectorOverrides,
   StepIconOverrides,
   TabsOverrides,
-  TabOverrides
+  TabOverrides,
+  ChipOverrides
 } from './overrides';
 
 
@@ -78,6 +79,7 @@ export const theme = createTheme({
     MuiStepIcon: StepIconOverrides,
     MuiTabs: TabsOverrides,
     MuiTab: TabOverrides,
+    MuiChip: ChipOverrides,
   },
 });
 
