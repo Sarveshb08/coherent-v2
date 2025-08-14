@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { TextField } from '../app/ui/components/TextField';
-import { ColorVariant, TextFieldSizeVariant, TextFieldVariantType } from '../app/ui/design-tokens';
 import { ThemeProvider } from '../app/ui/theme/ThemeProvider';
 
 const meta: Meta<typeof TextField> = {
@@ -25,17 +24,17 @@ const meta: Meta<typeof TextField> = {
   argTypes: {
     color: {
       control: 'select',
-      options: ['primary', 'secondary', 'error', 'warning', 'info', 'success', 'default'] as ColorVariant[],
+      options: ['primary', 'secondary', 'error', 'warning', 'info', 'success', 'default'],
       description: 'The color variant of the TextField',
     },
     size: {
       control: 'select', 
-      options: ['small', 'medium'] as TextFieldSizeVariant[],
+      options: ['small', 'medium'],
       description: 'The size variant of the TextField',
     },
     variant: {
       control: 'select',
-      options: ['standard', 'filled', 'outlined'] as TextFieldVariantType[],
+      options: ['standard', 'filled', 'outlined'],
       description: 'The variant style of the TextField',
     },
     label: {
@@ -438,7 +437,7 @@ export const OutlinedStates: Story = {
 export const SizeComparisons: Story = {
   render: () => (
     <div className="space-y-8 w-80">
-      {(['standard', 'filled', 'outlined'] as TextFieldVariantType[]).map((variant) => (
+      {(['standard', 'filled', 'outlined'] as const).map((variant) => (
         <div key={variant} className="space-y-4">
           <h3 className="font-semibold text-sm text-gray-700 capitalize">{variant}</h3>
           
@@ -480,11 +479,11 @@ export const SizeComparisons: Story = {
 export const CompleteShowcase: Story = {
   render: () => (
     <div className="grid grid-cols-3 gap-8 w-full max-w-6xl">
-      {(['standard', 'filled', 'outlined'] as TextFieldVariantType[]).map((variant) => (
+      {(['standard', 'filled', 'outlined'] as const).map((variant) => (
         <div key={variant} className="space-y-4">
           <h3 className="font-semibold text-lg text-gray-800 capitalize text-center">{variant}</h3>
           
-          {(['small', 'medium'] as TextFieldSizeVariant[]).map((size) => (
+          {(['small', 'medium'] as const).map((size) => (
             <div key={size} className="space-y-3">
               <h4 className="font-medium text-sm text-gray-600 capitalize">{size}</h4>
               

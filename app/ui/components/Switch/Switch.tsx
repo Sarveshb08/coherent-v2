@@ -38,13 +38,6 @@ export const Switch: React.FC<SwitchProps> = ({
         control={switchElement}
         label={label}
         disabled={disabled}
-        sx={{
-          '& .MuiFormControlLabel-label': {
-            fontSize: '14px',
-            fontWeight: 500,
-            color: disabled ? 'text.disabled' : 'text.primary',
-          },
-        }}
       />
     );
   }

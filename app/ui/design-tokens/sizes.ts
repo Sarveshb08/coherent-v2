@@ -22,6 +22,13 @@ export const sizes = {
   },
 } as const;
 
+// Component label typography from Figma
+export const labelTypography = {
+  fontSize: '14px',        // Label text size for form controls
+  fontWeight: 500,         // Label font weight
+  fontFamily: 'Roboto',    // Font family
+} as const;
+
 // TextField specific sizes from Figma
 export const textFieldSizes = {
   small: {
@@ -85,5 +92,41 @@ export const notificationTypography = {
     fontSize: '14px',
     lineHeight: '1.43em',
     letterSpacing: '1.21%',
+  },
+} as const;
+
+// Stepper component sizes and typography from Figma
+export const stepperSizes = {
+  iconSize: 24,                // Step icon diameter
+  connectorHeight: 1,          // Horizontal connector height
+  connectorWidth: 1,           // Vertical connector width
+  minConnectorHeight: 24,      // Minimum vertical connector height
+  labelGap: 8,                 // Gap between icon and label (left alignment)
+  verticalGap: 16,             // Gap between icon and label (center alignment)
+} as const;
+
+export const stepperTypography = {
+  // Step number typography: stepper/num_typo from Figma
+  stepNumber: {
+    fontFamily: '"Proxima Nova", Arial, sans-serif',
+    fontWeight: 700,           // Bold
+    fontSize: '18px',
+    lineHeight: '100%',        // lineHeight: 100 from Figma
+  },
+  // Step label typography
+  stepLabel: {
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: '14px',
+    lineHeight: 1.57,          // typography/subtitle2 lineHeight
+    fontWeightActive: 500,     // Medium for active/completed
+    fontWeightInactive: 400,   // Regular for inactive
+  },
+  // Optional text typography  
+  optionalText: {
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: '12px',
+    fontWeight: 400,           // Regular
+    lineHeight: 1.66,          // typography/caption lineHeight
+    marginTop: '2px',          // Small gap above optional text
   },
 } as const;
