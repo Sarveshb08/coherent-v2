@@ -22,6 +22,13 @@ export const sizes = {
   },
 } as const;
 
+// Component label typography from Figma
+export const labelTypography = {
+  fontSize: '14px',        // Label text size for form controls
+  fontWeight: 500,         // Label font weight
+  fontFamily: 'Roboto',    // Font family
+} as const;
+
 // TextField specific sizes from Figma
 export const textFieldSizes = {
   small: {
@@ -88,47 +95,38 @@ export const notificationTypography = {
   },
 } as const;
 
-// Switch specific sizes from Figma
-export const switchSizes = {
-  small: {
-    track: {
-      width: 40,              // 40px track width
-      height: 24,             // 24px track height
-    },
-    knob: {
-      size: 16,               // 16px knob diameter
-      padding: 4,             // 4px padding around knob
-      translateX: 16,         // 16px translate when checked
-    },
-    focusRipple: {
-      size: 20,               // 20px focus ring
-      offset: 2,              // 2px offset from knob
-    },
-  },
-  medium: {
-    track: {
-      width: 58,              // 58px track width  
-      height: 38,             // 38px track height
-    },
-    knob: {
-      size: 20,               // 20px knob diameter
-      padding: 9,             // 9px padding around knob
-      translateX: 20,         // 20px translate when checked
-    },
-    focusRipple: {
-      size: 34,               // 34px focus ring
-      offset: 2,              // 2px offset from knob
-    },
-  },
+// Stepper component sizes and typography from Figma
+export const stepperSizes = {
+  iconSize: 24,                // Step icon diameter
+  connectorHeight: 1,          // Horizontal connector height
+  connectorWidth: 1,           // Vertical connector width
+  minConnectorHeight: 24,      // Minimum vertical connector height
+  labelGap: 8,                 // Gap between icon and label (left alignment)
+  verticalGap: 16,             // Gap between icon and label (center alignment)
 } as const;
 
-// Switch transition timing
-export const switchTransitions = {
-  duration: 150,              // 150ms transition duration
-  easing: 'cubic-bezier(0.4, 0, 0.2, 1)', // Material Design easing
+export const stepperTypography = {
+  // Step number typography: stepper/num_typo from Figma
+  stepNumber: {
+    fontFamily: '"Proxima Nova", Arial, sans-serif',
+    fontWeight: 700,           // Bold
+    fontSize: '18px',
+    lineHeight: '100%',        // lineHeight: 100 from Figma
+  },
+  // Step label typography
+  stepLabel: {
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: '14px',
+    lineHeight: 1.57,          // typography/subtitle2 lineHeight
+    fontWeightActive: 500,     // Medium for active/completed
+    fontWeightInactive: 400,   // Regular for inactive
+  },
+  // Optional text typography  
+  optionalText: {
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: '12px',
+    fontWeight: 400,           // Regular
+    lineHeight: 1.66,          // typography/caption lineHeight
+    marginTop: '2px',          // Small gap above optional text
+  },
 } as const;
-
-// Export size type for TypeScript
-export type SizeVariant = 'small' | 'medium' | 'large';
-export type TextFieldSizeVariant = 'small' | 'medium';
-export type SwitchSizeVariant = 'small' | 'medium';

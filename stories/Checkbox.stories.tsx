@@ -1,11 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Checkbox } from '../app/ui/components/Checkbox';
-import { ColorVariant, SizeVariant } from '../app/ui/design-tokens';
+import { ThemeProvider } from '../app/ui/theme/ThemeProvider';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
   component: Checkbox,
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     layout: 'centered',
     docs: {
@@ -17,12 +24,12 @@ const meta: Meta<typeof Checkbox> = {
   argTypes: {
     color: {
       control: 'select',
-      options: ['primary', 'secondary', 'error', 'warning', 'info', 'success', 'default'] as ColorVariant[],
+      options: ['primary', 'secondary', 'error', 'warning', 'info', 'success', 'default'],
       description: 'The color variant of the checkbox',
     },
     size: {
       control: 'select', 
-      options: ['small', 'medium', 'large'] as SizeVariant[],
+      options: ['small', 'medium', 'large'],
       description: 'The size variant of the checkbox',
     },
     checked: {
@@ -130,7 +137,7 @@ export const Sizes: Story = {
 export const Colors: Story = {
   render: () => (
     <div className="grid grid-cols-4 gap-4">
-      {(['primary', 'secondary', 'error', 'warning', 'info', 'success', 'default'] as ColorVariant[]).map((color) => (
+      {(['primary', 'secondary', 'error', 'warning', 'info', 'success', 'default'] as const).map((color) => (
         <div key={color} className="flex flex-col items-center gap-2">
           <Checkbox color={color} checked />
           <span className="text-xs text-gray-500 capitalize">{color}</span>

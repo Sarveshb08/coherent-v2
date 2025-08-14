@@ -1,49 +1,12 @@
-import React, { ChangeEvent } from 'react';
-import { Switch as MuiSwitch, SwitchProps as MuiSwitchProps } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import React from 'react';
+import { Switch as MuiSwitch, FormControlLabel } from '@mui/material';
 import clsx from 'clsx';
-import { 
-  colors, 
-  switchSizes, 
-  switchTransitions, 
-  ColorVariant, 
-  SwitchSizeVariant 
-} from '../../design-tokens';
+import { SwitchProps } from './types';
 
-export interface SwitchProps extends Omit<MuiSwitchProps, 'color' | 'size'> {
-  /**
-   * The color variant of the switch
-   * @default 'primary'
-   */
-  color?: ColorVariant;
-
-  /**
-   * The size variant of the switch
-   * @default 'medium'
-   */
-  size?: SwitchSizeVariant;
-
-  /**
-   * If true, the switch is checked
-   * @default false
-   */
-  checked?: boolean;
-
-  onChange?: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void;
-
-  /**
-   * If true, the switch is disabled
-   * @default false
-   */
-  disabled?: boolean;
-
-  className?: string;
-
-  label?: string;
-
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
-}
-
+/**
+ * Switch component using MUI theme-based styling
+ * Supports all standard MUI Switch props including color variants and sizes
+ */
 export const Switch: React.FC<SwitchProps> = ({
   color = 'primary',
   size = 'medium',
@@ -68,20 +31,14 @@ export const Switch: React.FC<SwitchProps> = ({
     />
   );
 
-  // If label is provided, wrap in a container
+  // If label is provided, use FormControlLabel for proper accessibility
   if (label) {
     return (
-      <div className="flex items-center gap-2">
-        {switchElement}
-        <label 
-          className={clsx(
-            "text-sm font-medium cursor-pointer",
-            disabled ? "text-gray-400" : "text-gray-700"
-          )}
-        >
-          {label}
-        </label>
-      </div>
+      <FormControlLabel
+        control={switchElement}
+        label={label}
+        disabled={disabled}
+      />
     );
   }
 
