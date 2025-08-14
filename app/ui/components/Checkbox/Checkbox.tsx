@@ -25,13 +25,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       <FormControlLabel
         control={checkboxElement}
         label={label}
-        sx={{
-          '& .MuiFormControlLabel-label': {
-            fontSize: '14px',
-            fontWeight: 500,
-            color: 'text.primary',
-          },
-        }}
       />
     );
   }

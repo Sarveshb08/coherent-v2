@@ -1,5 +1,16 @@
 import { createTheme } from '@mui/material/styles';
 import { colors, sizes, borderRadius, strokeWeights, textFieldSizes, notificationSizes } from '../design-tokens';
+import { 
+  TextFieldOverrides, 
+  CheckboxOverrides, 
+  SwitchOverrides, 
+  AlertOverrides,
+  StepperOverrides,
+  StepOverrides,
+  StepLabelOverrides,
+  StepConnectorOverrides,
+  StepIconOverrides
+} from './overrides';
 
 
 export const theme = createTheme({
@@ -53,47 +64,16 @@ export const theme = createTheme({
     borderRadius: borderRadius.textField,
   },
   components: {
-    // TextField component customization
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          '& .MuiOutlinedInput-root': {
-            borderRadius: `${borderRadius.textField}px`,
-            fontSize: textFieldSizes.medium.fontSize,
-            fontFamily: 'Roboto, sans-serif',
-            '& fieldset': {
-              borderWidth: `${strokeWeights.default}px`,
-            },
-            '&:hover fieldset': {
-              borderWidth: `${strokeWeights.default}px`,
-            },
-            '&.Mui-focused fieldset': {
-              borderWidth: `${strokeWeights.focused}px`,
-            },
-          },
-          '& .MuiInputLabel-root': {
-            fontSize: textFieldSizes.medium.labelFontSize,
-            fontFamily: 'Roboto, sans-serif',
-          },
-        },
-      },
-      variants: [
-        {
-          props: { size: 'small' },
-          style: {
-            '& .MuiOutlinedInput-root': {
-              fontSize: textFieldSizes.small.fontSize,
-              '& .MuiInputBase-input': {
-                padding: textFieldSizes.small.padding,
-              },
-            },
-            '& .MuiInputLabel-root': {
-              fontSize: textFieldSizes.small.labelFontSize,
-            },
-          },
-        },
-      ],
-    },
+    // Component overrides organized in separate files
+    MuiTextField: TextFieldOverrides,
+    MuiCheckbox: CheckboxOverrides,
+    MuiSwitch: SwitchOverrides,
+    MuiAlert: AlertOverrides,
+    MuiStepper: StepperOverrides,
+    MuiStep: StepOverrides,
+    MuiStepLabel: StepLabelOverrides,
+    MuiStepConnector: StepConnectorOverrides,
+    MuiStepIcon: StepIconOverrides,
   },
 });
 

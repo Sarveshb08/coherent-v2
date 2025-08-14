@@ -1,211 +1,160 @@
-# Design System Rules for Next.js Dashboard
+# GitHub Copilot Instructions
 
-This document outlines the design system structure and rules for integrating Figma designs using the Model Context Protocol.
+This file contains instructions for GitHub Copilot to help with code generation and development in this project.
 
-## Design System Structure
+## Project Context
 
-### 1. Token Definitions
+This is a Next.js 14+ project using:
+- TypeScript
+- Material-UI (MUI) v5+ with custom theming
+- Storybook for component development
+- Tailwind CSS for utility styling
+- React 18+
 
-Design tokens are centralized in the `app/ui/design-tokens/` directory:
+## Component Development Methodology
 
-- **Colors**: `app/ui/design-tokens/colors.ts`
-  ```typescript
-  export const colors = {
-    primary: {
-      main: '#461E96',
-      hover: 'rgba(70, 30, 150, 0.04)',
-      focus: 'rgba(70, 30, 150, 0.3)',
-      border: '#461E96',
-      disabled: 'rgba(70, 30, 150, 0.38)',
-    },
-    // Additional color tokens...
-  };
-  ```
+### MANDATORY: Analysis-First Approach
 
-- **Sizes**: `app/ui/design-tokens/sizes.ts`
-- **Index**: `app/ui/design-tokens/index.ts` (exports all tokens)
+**BEFORE implementing any component, ALWAYS follow this sequence:**
 
-**Token Format**: TypeScript objects with semantic naming (primary, secondary, error, etc.) and state variants (main, hover, focus, disabled).
-
-### 2. Component Library
-
-Components are organized in `app/ui/components/` with the following structure:
-
+#### STEP 1: ANALYZE DESIGN 
 ```
-app/ui/components/
-├── index.ts (barrel exports)
-├── Checkbox/
-│   ├── Checkbox.tsx
-│   ├── index.ts
-│   ├── types.ts
-│   └── README.md
-├── Notification/
-├── Switch/
-└── TextField/
+1. Use mcp_figma_dev_mod_get_variable_defs to extract exact design tokens
+2. Use mcp_figma_dev_mod_get_image to get visual reference
+3. Use mcp_figma_dev_mod_get_code to understand component structure
+4. Document EXACT requirements (colors, spacing, typography, states)
 ```
 
-**Component Architecture**:
-- Each component has its own directory with TypeScript types
-- Components use MUI as the base library with custom styling
-- Props are typed in separate `types.ts` files
-- Each component includes a README.md for documentation
+#### STEP 2: EXTRACT AND ADD DESIGN TOKENS
+```
+1. Extract ALL color values, sizes, typography from Figma analysis
+2. Add new tokens to /app/ui/design-tokens/colors.ts (for colors)
+3. Add new tokens to /app/ui/design-tokens/sizes.ts (for spacing, typography, dimensions)
+4. Update /app/ui/design-tokens/index.ts to export new tokens
+5. NEVER use hardcoded values in theme overrides - ALWAYS use design tokens
+```
 
-**Example Component Pattern**:
+#### STEP 3: ANALYZE MUI CAPABILITIES 
+```
+1. Search https://mui.com/material-ui/react-${component}/ for official MUI documentation
+2. Use get_vscode_api to search MUI documentation for the target component
+3. For GitHub Copilot agents: Refer to https://github.com/mui/material-ui/tree/v7.3.1/docs/data/material/components
+4. Use semantic_search to find similar components in the codebase
+5. Document what MUI provides out-of-the-box:
+   - Default props and variants
+   - Theme customization options
+   - Built-in accessibility features
+   - Styling override points
+```
+
+#### STEP 4: GAP ANALYSIS 
+```
+Create explicit comparison:
+- What MUI provides: [list capabilities]
+- What design requires: [list requirements]  
+- Gaps to bridge: [minimal list of actual customizations needed]
+- Implementation strategy: Theme override vs Custom component
+```
+
+#### STEP 5: MINIMAL IMPLEMENTATION 
+```
+1. Start with standard MUI component
+2. Apply theme overrides using ONLY design tokens (never hardcoded values)
+3. Only create custom components for gaps that theme cannot solve
+4. Validate each change against design requirements
+```
+
+#### STEP 6: ORGANIZE THEME OVERRIDES
+```
+1. Create /app/ui/theme/overrides/ComponentName.override.ts
+2. Import design tokens at top of override file
+3. Use ONLY design tokens for all styling values (colors, sizes, typography)
+4. Add all MUI component customizations in the override file
+5. Import and reference in main theme/index.ts
+6. Keep main theme file clean and organized
+```
+
+### MUI-First Development Rules
+
+**NEVER create custom components when MUI theme can achieve the same result**
+
+#### Theme Override Priority:
 ```typescript
-import React from 'react';
-import { Checkbox as MuiCheckbox, FormControlLabel } from '@mui/material';
-import clsx from 'clsx';
-import { CheckboxProps } from './types';
-
-export const Checkbox: React.FC<CheckboxProps> = ({
-  className,
-  label,
-  ...props
-}) => {
-  // Component implementation
-};
+1. FIRST: Try MUI theme component overrides
+2. SECOND: Try MUI component props and variants
+3. THIRD: Try styled() wrapper with minimal changes
+4. LAST RESORT: Custom component implementation
 ```
 
-### 3. Frameworks & Libraries
+### Design System Integration
 
-**UI Framework**: React 18+ with TypeScript
-**Styling Libraries**: 
-- Material-UI (MUI) v7.2.0 for base components
-- Tailwind CSS v3.4.17 for utility classes
-- Emotion for styled components
-
-**Build System**: 
-- Next.js (latest) with Turbopack for development
-- PostCSS for CSS processing
-- TypeScript 5.7.3
-
-**Package Manager**: pnpm with lockfile
-
-### 4. Asset Management
-
-**Static Assets**: Stored in `public/` directory
-- Favicon: `public/favicon.ico`
-
-**Asset References**: Use Next.js public folder for static assets
-**Optimization**: Next.js built-in image optimization for web assets
-
-### 5. Icon System
-
-**Icons**: Using Heroicons React library (`@heroicons/react`)
-```typescript
-import { IconName } from '@heroicons/react/24/outline';
+#### Color Usage Rules:
+```
+- Extract exact hex values from Figma variables using mcp_figma_dev_mod_get_variable_defs
+- Add extracted colors to /app/ui/design-tokens/colors.ts with semantic names
+- Add extracted sizes/typography to /app/ui/design-tokens/sizes.ts
+- Import and use ONLY design tokens in theme overrides, never hardcoded values
+- Map to MUI theme palette (primary, secondary, success, error)
+- Use semantic color names, not hex values in components
+- Validate colors match design exactly
 ```
 
-**Usage Pattern**: Import specific icons as React components
-**Naming Convention**: Follow Heroicons naming conventions
-
-### 6. Styling Approach
-
-**CSS Methodology**: Combination of:
-- Tailwind CSS utility classes for layout and spacing
-- MUI theming system for component styling
-- Emotion for styled components
-
-**Global Styles**: `app/ui/global.css`
-**Theme Configuration**: 
-- `app/ui/theme/` directory contains theme configuration
-- `ThemeProvider.tsx` wraps the application
-- `augmentation.ts` extends MUI theme types
-
-**Responsive Design**: 
-- Tailwind responsive utilities
-- MUI breakpoint system
-
-**Theme Structure**:
-```typescript
-// app/ui/theme/ThemeProvider.tsx
-import { ThemeProvider as MuiThemeProvider } from '@mui/material';
-import { theme } from './index';
-
-export const ThemeProvider = ({ children }) => (
-  <MuiThemeProvider theme={theme}>
-    {children}
-  </MuiThemeProvider>
-);
+#### Component Structure:
+```
+/app/ui/components/ComponentName/
+├── index.ts (exports only)
+├── ComponentName.tsx (main component)
+├── types.ts (TypeScript interfaces)
+└── README.md (usage documentation)
 ```
 
-### 7. Project Structure
-
+#### Theme Override Organization:
 ```
-nextjs-dashboard/
-├── app/                    # Next.js app directory
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Home page
-│   └── ui/                # UI system
-│       ├── components/    # Reusable components
-│       ├── design-tokens/ # Design tokens
-│       ├── theme/         # Theme configuration
-│       ├── fonts.ts       # Font definitions
-│       └── global.css     # Global styles
-├── public/                # Static assets
-├── stories/               # Storybook stories
-├── .github/              # GitHub configuration
-└── configuration files   # Next.js, Tailwind, TypeScript configs
-```
+For MUI component customizations:
 
-## Integration Guidelines
+1. Create /app/ui/theme/overrides/ComponentName.override.ts
+2. Export component overrides and prop extensions
+3. Import and reference in main theme/index.ts
+4. Keep theme/index.ts clean - only imports and assembly
 
-### When Converting Figma Designs
+Example structure:
+/app/ui/theme/
+├── index.ts (main theme assembly)
+├── augmentation.ts (global type extensions)
+└── overrides/
+    ├── TextField.override.ts
+    ├── Button.override.ts
+    └── ComponentName.override.ts
 
-1. **Extract Design Tokens First**: 
-   - Add new tokens to appropriate files in `design-tokens/`
-   - Use semantic naming aligned with existing patterns
-
-2. **Component Development**:
-   - Create new components in `app/ui/components/ComponentName/`
-   - Include TypeScript types, main component, barrel export, and README
-   - Extend MUI components when possible
-
-3. **Styling Priority**:
-   - Use MUI theme system for component-specific styling
-   - Use Tailwind for layout, spacing, and utilities
-   - Avoid inline styles; prefer theme-based approaches
-
-4. **Documentation**:
-   - Create Storybook stories in `stories/` directory
-   - Include component README with usage examples
-   - Document any new design tokens
-
-5. **Testing Integration**:
-   - Ensure components work with existing theme
-   - Test responsive behavior across breakpoints
-   - Validate accessibility features
-
-### Code Patterns
-
-**Component Export Pattern**:
-```typescript
-// Component/index.ts
-export { ComponentName } from './ComponentName';
-export type { ComponentNameProps } from './types';
+Each override file should contain:
+- MUI component theme overrides
+- Custom prop extensions (if needed)
+- Component-specific design tokens
 ```
 
-**Theme Integration**:
-```typescript
-import { useTheme } from '@mui/material/styles';
-
-const Component = () => {
-  const theme = useTheme();
-  // Use theme.palette, theme.spacing, etc.
-};
+### Implementation Validation:
+```
+- Does it match Figma design exactly?
+- Does it use MUI patterns correctly?
+- Is it accessible by default?
+- Is it maintainable and extensible?
 ```
 
-**Responsive Design**:
-```typescript
-// Use Tailwind responsive utilities
-<div className="w-full md:w-1/2 lg:w-1/3">
-  {/* Content */}
-</div>
+## CRITICAL: Anti-Patterns to Avoid
 
-// Or MUI breakpoints
-sx={{
-  width: { xs: '100%', md: '50%', lg: '33.33%' }
-}}
-```
+❌ **DO NOT:**
+- Rebuild functionality that MUI already provides
+- Create custom components when theme overrides suffice
+- Ignore MUI's theming system
+- Apply wrong colors from misreading design
+- Skip the analysis phase and jump to implementation
+- Use hardcoded values in theme overrides
 
-This structure ensures consistent design implementation and maintainable code that aligns with Figma designs while leveraging the existing MUI and Tailwind ecosystem.
+✅ **DO:**
+- Always analyze MUI capabilities first
+- Extract exact design token values from Figma
+- Use ONLY design tokens for all styling in theme overrides
+- Leverage MUI's accessibility features
+- Create minimal, focused customizations
+- Document decision rationale
+

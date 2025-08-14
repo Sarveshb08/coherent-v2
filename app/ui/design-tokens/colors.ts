@@ -114,4 +114,12 @@ export const colors = {
       icon: '#2E7D32',           // Success icon color for outlined/standard
     },
   },
+
+  // Stepper-specific colors from Figma
+  stepper: {
+    connector: '#a6a7b0',        // _components/stepper/connector
+    numBackground: '#a6a7b0',    // _components/stepper/num_background  
+    activeBackground: '#6930ca', // secondary/main for active steps
+    completedBackground: '#00a331', // success/light for completed steps
+  },
 } as const;
