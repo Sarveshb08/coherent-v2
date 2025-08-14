@@ -11,12 +11,12 @@ export const colors = {
     disabled: 'rgba(70, 30, 150, 0.38)',
   },
   
-  // Secondary colors  
+  // Secondary colors from Figma variables
   secondary: {
-    main: '#6930CA',        // Secondary purple
-    hover: 'rgba(105, 48, 202, 0.04)',
-    focus: 'rgba(105, 48, 202, 0.3)',
-    border: '#6930CA',
+    main: '#6930ca',        // secondary/main from Figma
+    hover: '#6930ca0a',     // secondary/_states/hover from Figma (0a = 0.04 alpha)
+    focus: '#6930ca4d',     // secondary/_states/focusVisible from Figma (4d = 0.3 alpha)
+    border: '#6930ca',
     disabled: 'rgba(105, 48, 202, 0.38)',
   },
   

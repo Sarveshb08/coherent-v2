@@ -10,37 +10,61 @@ export const ChipOverrides: Components['MuiChip'] = {
       fontWeight: chipTypography.fontWeight,
       lineHeight: chipTypography.lineHeight,
       
-      // Border radius
+      // Border radius - 16px for both sizes to match Figma
       borderRadius: '16px',
+      
+      // Ensure proper alignment
+      display: 'inline-flex',
+      alignItems: 'center',
       
       // Size-specific overrides
       ...(ownerState.size === 'small' && {
         height: chipSizes.small.height,
-        padding: chipSizes.small.padding,
+        padding: '0 12px', // Horizontal padding, vertical handled by height
         fontSize: chipSizes.small.fontSize,
         '& .MuiChip-avatar': {
           width: chipSizes.small.avatarSize,
           height: chipSizes.small.avatarSize,
           fontSize: '10px', // avatar/initialsSm from Figma
+          marginLeft: '-6px', // Negative margin to align with padding
+          marginRight: '4px',
         },
         '& .MuiChip-deleteIcon': {
           width: chipSizes.small.deleteIconSize,
           height: chipSizes.small.deleteIconSize,
+          marginLeft: '4px',
+          marginRight: '-6px', // Negative margin to align with padding
+        },
+        '& .MuiChip-icon': {
+          width: chipSizes.small.deleteIconSize,
+          height: chipSizes.small.deleteIconSize,
+          marginLeft: '-6px',
+          marginRight: '4px',
         },
       }),
       
       ...(ownerState.size === 'medium' && {
         height: chipSizes.medium.height,
-        padding: chipSizes.medium.padding,
+        padding: '0 16px', // Horizontal padding, vertical handled by height
         fontSize: chipSizes.medium.fontSize,
         '& .MuiChip-avatar': {
           width: chipSizes.medium.avatarSize,
           height: chipSizes.medium.avatarSize,
           fontSize: '12px', // avatar/initialsMd from Figma
+          marginLeft: '-8px', // Negative margin to align with padding
+          marginRight: '6px',
         },
         '& .MuiChip-deleteIcon': {
           width: chipSizes.medium.deleteIconSize,
           height: chipSizes.medium.deleteIconSize,
+          marginLeft: '6px',
+          marginRight: '-8px', // Negative margin to align with padding
+        },
+        '& .MuiChip-icon': {
+          width: chipSizes.medium.deleteIconSize,
+          height: chipSizes.medium.deleteIconSize,
+          marginLeft: '-8px',
+          marginRight: '6px',
         },
       }),
     }),
@@ -53,8 +77,7 @@ export const ChipOverrides: Components['MuiChip'] = {
         
         // Hover state from Figma: secondary/_states/hover
         '&:hover': {
-          backgroundColor: colors.secondary.main,
-          boxShadow: `inset 0 0 0 100px ${colors.secondary.hover}`, // #6930ca0a
+          backgroundColor: colors.secondary.hover, // #6930ca0a from Figma
         },
         
         // Focus state from Figma: secondary/_states/focusVisible  
