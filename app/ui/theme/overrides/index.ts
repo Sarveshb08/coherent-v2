@@ -10,3 +10,4 @@ export {
   StepConnectorOverrides, 
   StepIconOverrides 
 } from './Stepper.override';
+export { TabsOverrides, TabOverrides } from './Tabs.override';

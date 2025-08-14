@@ -130,3 +130,22 @@ export const stepperTypography = {
     marginTop: '2px',          // Small gap above optional text
   },
 } as const;
+
+// Tabs-specific sizes from Figma
+export const tabsSizes = {
+  minHeight: 48,               // Standard tab height
+  indicatorHeight: 2,          // Active tab indicator height
+  padding: '12px 16px',        // Tab padding
+  scrollButtonWidth: 40,       // Scroll button width
+  iconSize: 24,                // Icon size in tabs
+  gap: 8,                      // Gap between icon and label
+} as const;
+
+// Tabs typography from Figma  
+export const tabsTypography = {
+  fontFamily: 'Roboto, sans-serif',
+  fontSize: '14px',            // Tab label font size
+  fontWeight: 500,             // Medium for labels
+  lineHeight: 1.75,            // Line height for readability
+  textTransform: 'none' as const, // No uppercase transformation
+} as const;

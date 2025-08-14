@@ -9,7 +9,9 @@ import {
   StepOverrides,
   StepLabelOverrides,
   StepConnectorOverrides,
-  StepIconOverrides
+  StepIconOverrides,
+  TabsOverrides,
+  TabOverrides
 } from './overrides';
 
 
@@ -74,6 +76,8 @@ export const theme = createTheme({
     MuiStepLabel: StepLabelOverrides,
     MuiStepConnector: StepConnectorOverrides,
     MuiStepIcon: StepIconOverrides,
+    MuiTabs: TabsOverrides,
+    MuiTab: TabOverrides,
   },
 });
 
