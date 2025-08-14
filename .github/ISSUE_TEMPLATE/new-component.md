@@ -7,8 +7,11 @@ assignees: ''
 
 ---
 
+## Note: Mandatorily read `.github/copilot-instructions.md` before generating code
+
 ## Overview
 Create a reusable [] component for the Coherent-v2 design system, following the latest Figma design guidelines and system requirements.
+
 
 ## Requirements
 - Implement the [] component using TypeScript, Tailwind CSS, and Material-UI.
